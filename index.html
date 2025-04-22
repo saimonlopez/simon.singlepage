@@ -398,6 +398,19 @@
       element.classList.add('active');
   }
 
+  function showGallerySemana16(element) {
+      document.getElementById('reportFrame').style.display = 'none';
+      document.querySelectorAll('.gallery-container').forEach(gallery => {
+          gallery.style.display = 'none';
+      });
+      document.getElementById('gallery-semana16').style.display = 'grid';
+
+      document.querySelectorAll('.nav-link').forEach(link => {
+          link.classList.remove('active');
+      });
+      element.classList.add('active');
+  }
+
   function showGallerySaimon(element) {
       document.getElementById('reportFrame').style.display = 'none';
       document.querySelectorAll('.gallery-container').forEach(gallery => {
