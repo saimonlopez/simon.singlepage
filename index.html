@@ -173,6 +173,22 @@
             margin-left: 220px;
             flex: 1;
             padding: 10px;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .content:not(:has(.gallery-container[style*="display: grid"])):not(:has(#reportFrame[style*="display: block"])):before {
+            content: '';
+            position: fixed;
+            left: 220px;
+            right: 0;
+            top: 0;
+            bottom: 40px;
+            background-image: url('https://glwiolevxdxxlhcxyawp.supabase.co/storage/v1/object/sign/saimon/ChatGPT%20Image%2022%20abr%202025,%2010_41_06%20a.m..png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2Q0NDU0YmYxLTRiN2UtNGJkMS1hZTQ2LTFlN2E4ZjhmYjY3NCJ9.eyJ1cmwiOiJzYWltb24vQ2hhdEdQVCBJbWFnZSAyMiBhYnIgMjAyNSwgMTBfNDFfMDYgYS5tLi5wbmciLCJpYXQiOjE3NDUzMzk4ODcsImV4cCI6MTc3Njg3NTg4N30.y-0N7q1-Zsm811Smen09L_GRaJtQ7RdltsaKbSUytDc');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
         }
         iframe {
             width: 100%;
@@ -182,11 +198,6 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             background: #fff;
             object-fit: cover;
-        }
-        .content {
-            margin-left: 220px;
-            flex: 1;
-            padding: 10px;
         }
         iframe {
             width: 100%;
@@ -339,10 +350,7 @@
         </div>
     </nav>
   <main class="content" id="content">
-    <div class="gallery-container" id="mi-galeria" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 20px;">
-        <div class="gallery-item" style="width: 1110px; height: 800px; display: flex; justify-content: center; align-items: center;">
-            <img src="https://glwiolevxdxxlhcxyawp.supabase.co/storage/v1/object/sign/saimon/ChatGPT%20Image%2021%20abr%202025,%2004_44_58%20p.m..png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InN0b3JhZ2UtdXJsLXNpZ25pbmcta2V5X2Q0NDU0YmYxLTRiN2UtNGJkMS1hZTQ2LTFlN2E4ZjhmYjY3NCJ9.eyJ1cmwiOiJzYWltb24vQ2hhdEdQVCBJbWFnZSAyMSBhYnIgMjAyNSwgMDRfNDRfNTggcC5tLi5wbmciLCJpYXQiOjE3NDUyNzIwNjcsImV4cCI6MTc3NjgwODA2N30.ay1beCWI8H7fpB4u1e6Camv36ox0OjqAvpvIt4EyfRA" alt="Imagen 1" style="width: 1110px; height: 800px; object-fit: contain;">
-        </div>
+    <div class="gallery-container" id="mi-galeria" style="display: none;">
     </div>
     <iframe id="reportFrame" src="" style="display: none;"></iframe>
     <div id="gallery-semana13" class="gallery-container">
@@ -491,7 +499,5 @@
       });
   });
 </script>
-</body>
-</html>
 </body>
 </html>
