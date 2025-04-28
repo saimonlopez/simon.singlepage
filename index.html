@@ -309,7 +309,7 @@
                       <div class="nav-section-title" onclick="toggleSubMenu(this)">▼ Mapa De Calor Moscas</div>
                       <div class="nav-section-content">
                           <div class="nav-item">
-                              <a class="nav-link" onclick="showGallerySemana17(this)">
+                              <a class="nav-link" onclick="showGallerySaimons(this)">
                               semana 17.2025
                               </a>
                           </div>
@@ -353,7 +353,7 @@
     <div class="gallery-container" id="mi-galeria" style="display: none;">
     </div>
     <iframe id="reportFrame" src="" style="display: none;"></iframe>
-    <div id="gallery-semana17" class="gallery-container" style="display:none;">
+    <div id="gallery-saimons" class="gallery-container" style="display:none;">
         <div class="gallery-item"><img src="https://i.postimg.cc/1XX8BTjp/agroam17.png" alt="Imagen 1"></div>
         <div class="gallery-item"><img src="https://i.postimg.cc/ZqPv56Ny/maver17.png" alt="Imagen 2"></div>
         <div class="gallery-item"><img src="https://i.postimg.cc/ZnQCMcGX/frau17.png.png" alt="Imagen 3"></div>
@@ -417,6 +417,19 @@
           gallery.style.display = 'none';
       });
       document.getElementById('gallery-saimon').style.display = 'grid';
+
+      document.querySelectorAll('.nav-link').forEach(link => {
+          link.classList.remove('active');
+      });
+      element.classList.add('active');
+  }
+
+  function showGallerySaimons(element) {
+      document.getElementById('reportFrame').style.display = 'none';
+      document.querySelectorAll('.gallery-container').forEach(gallery => {
+          gallery.style.display = 'none';
+      });
+      document.getElementById('gallery-saimons').style.display = 'grid';
 
       document.querySelectorAll('.nav-link').forEach(link => {
           link.classList.remove('active');
