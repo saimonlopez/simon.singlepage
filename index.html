@@ -138,10 +138,6 @@
     }
 
     .section-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 30px;
-      align-items: end;
       margin-bottom: 35px;
     }
 
@@ -200,7 +196,6 @@
     .product {
       background: white;
       border: 1px solid var(--line);
-      position: relative;
       transition: .25s ease;
     }
 
@@ -502,6 +497,7 @@
       place-items: center;
       z-index: 300;
       padding: 20px;
+      overflow-y: auto;
     }
 
     .modal.active {
@@ -512,6 +508,8 @@
       background: white;
       max-width: 900px;
       width: 100%;
+      max-height: 92vh;
+      overflow-y: auto;
       display: grid;
       grid-template-columns: 1fr .75fr;
       animation: pop .2s ease;
@@ -522,6 +520,7 @@
       overflow: hidden;
       background: var(--gray);
       cursor: zoom-in;
+      touch-action: pan-y;
     }
 
     .zoom-container img {
@@ -579,6 +578,7 @@
       opacity: 0;
       transition: .25s;
       font-size: 13px;
+      text-align: center;
     }
 
     .toast.active {
@@ -623,8 +623,12 @@
         height: 430px;
       }
 
-      .section-head {
-        display: block;
+      .modal-info {
+        padding: 28px 22px 34px;
+      }
+
+      .modal-info h2 {
+        font-size: 38px;
       }
     }
   </style>
@@ -658,10 +662,8 @@
 
 <section class="section" id="catalogo">
   <div class="section-head">
-    <div>
-      <h2>Nueva colección</h2>
-      <p>Selecciona una talla antes de agregar al carrito.</p>
-    </div>
+    <h2>Nueva colección</h2>
+    <p>Selecciona una talla antes de agregar al carrito.</p>
   </div>
 
   <div class="controls">
@@ -1074,8 +1076,6 @@
   }
 
   function zoomTouch(event) {
-    event.preventDefault();
-
     const touch = event.touches[0];
     const container = event.currentTarget;
     const image = document.getElementById("zoomImage");
