@@ -510,15 +510,15 @@
 
     .modal-card {
       background: white;
-      max-width: 1050px;
+      max-width: 900px;
       width: 100%;
       display: grid;
-      grid-template-columns: 1.15fr .85fr;
+      grid-template-columns: 1fr .75fr;
       animation: pop .2s ease;
     }
 
     .zoom-container {
-      height: 680px;
+      height: 620px;
       overflow: hidden;
       background: var(--gray);
       cursor: zoom-in;
@@ -534,27 +534,37 @@
 
     .modal-info {
       padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .modal-info h2 {
       font-family: "Bodoni Moda", serif;
-      font-size: 50px;
+      font-size: 46px;
       line-height: .95;
-      margin-bottom: 18px;
+      margin-bottom: 26px;
     }
 
-    .modal-info p {
-      line-height: 1.8;
-      color: var(--muted);
-      margin-bottom: 20px;
+    .modal-info h3 {
+      font-size: 22px;
+      margin: 8px 0 20px;
     }
 
-    .zoom-note {
-      font-size: 12px;
+    .modal-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .exit-btn {
+      border: 1px solid var(--black);
+      padding: 13px;
+      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-top: 12px;
-      color: var(--muted);
+      background: white;
+      color: var(--black);
     }
 
     .toast {
@@ -684,7 +694,7 @@
       <h3>Pago QR</h3>
       <p>Escanea este código para realizar el pago.</p>
       <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=Pago%20Judith" alt="QR de pago Judith">
-      <p class="zoom-note">Reemplaza esta imagen por tu QR real.</p>
+      <p style="margin-top:14px;color:#777;font-size:12px;">Reemplaza esta imagen por tu QR real.</p>
     </div>
   </div>
 </section>
@@ -998,15 +1008,17 @@
 
     document.getElementById("modalContent").innerHTML = `
       <div>
-        <div class="zoom-container" onmousemove="zoomImage(event)" onmouseleave="resetZoom()" ontouchmove="zoomTouch(event)" ontouchend="resetZoom()">
+        <div class="zoom-container"
+          onmousemove="zoomImage(event)"
+          onmouseleave="resetZoom()"
+          ontouchmove="zoomTouch(event)"
+          ontouchend="resetZoom()">
           <img id="zoomImage" src="${product.image}" alt="${product.name}">
         </div>
       </div>
 
       <div class="modal-info">
         <h2>${product.name}</h2>
-        <p>${product.description}</p>
-        <p class="zoom-note">Mueve el cursor sobre la imagen para hacer zoom.</p>
 
         <div class="size-title">Talla</div>
         <div class="sizes" id="modalSizes">
@@ -1019,10 +1031,10 @@
 
         <h3>S/ ${product.price.toFixed(2)}</h3>
 
-        <br>
-
-        <button class="add-btn" onclick="addFromModal(${product.id})">Agregar al carrito</button>
-        <button class="view-btn" onclick="closeModalDirect()">Cerrar</button>
+        <div class="modal-actions">
+          <button class="add-btn" onclick="addFromModal(${product.id})">Agregar</button>
+          <button class="exit-btn" onclick="closeModalDirect()">Salir</button>
+        </div>
       </div>
     `;
 
