@@ -1,33 +1,1126 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Panel de Control CSOL PALTO</title>
-    <link rel="icon" href="https://media-hosting.imagekit.io/5878685b07814843/Imagen1.png?Expires=1838212599&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=P72~B-8x9Yj5f6PhHPYFRzkRANlTCnVMl5nluQygjwUhZC6lrbcuO23NQ611g59g5KT7dLxMWB0pz8wTw4BsYSNGVPw2GoFBZsQz9n7raL3YxPYCn5ygYMvVU9VEkMfyXdZo~OaIy3ZbqLjLQ7bllHXoVktwpdJr5Lk4L3NZ2a4SXu8C1HHWdUtxHoSgDNAUNINQJ0Xulv~UdyaOjSRr~rACzolhX~LFa~qRCuTgSJg7R1Kt8WEp5qYm6ADm9PbUVml-ByUpVPc7G4jm88YKgquHJZIvdCWcpXlKAa4GdeopBozyEftUhUzSbdI~S8IMoP85aIdclcUpPCp8DuWIbg__" type="image/x-icon">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            display: flex;
-            min-height: 100vh;
-            background: #ffffff;
-        }
-        .login-container {
-            width: 100%;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Judith | Moda para Iglesia</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500;700;900&display=swap" rel="stylesheet">
 
+  <style>
+    :root {
+      --black: #111;
+      --white: #fff;
+      --gray: #f4f4f4;
+      --line: #dcdcdc;
+      --muted: #777;
+      --accent: #7a4b34;
+      --green: #25d366;
+    }
 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      color: var(--black);
+      background: var(--white);
+    }
 
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+      padding: 18px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
+    .logo {
+      font-family: "Bodoni Moda", serif;
+      font-size: 44px;
+      font-weight: 900;
+      letter-spacing: -3px;
+      color: var(--black);
+      line-height: 1;
+    }
 
+    .logo span {
+      font-style: italic;
+      color: var(--accent);
+    }
 
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
 
+    nav a {
+      text-decoration: none;
+      color: var(--black);
+    }
 
+    button {
+      border: 0;
+      cursor: pointer;
+      background: none;
+      font-family: Helvetica, Arial, sans-serif;
+    }
 
+    .cart-top {
+      background: var(--black);
+      color: var(--white);
+      padding: 12px 18px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
 
+    .hero {
+      min-height: 86vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-text {
+      padding: 8% 10%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-text h1 {
+      font-family: "Bodoni Moda", serif;
+      font-size: clamp(54px, 8vw, 110px);
+      line-height: .88;
+      letter-spacing: -5px;
+      margin-bottom: 28px;
+    }
+
+    .hero-text p {
+      max-width: 470px;
+      line-height: 1.8;
+      color: #444;
+      font-size: 15px;
+    }
+
+    .hero-text button {
+      margin-top: 34px;
+      width: fit-content;
+      background: var(--black);
+      color: var(--white);
+      padding: 15px 32px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 12px;
+    }
+
+    .hero-img {
+      background-image: url("https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=85");
+      background-size: cover;
+      background-position: center;
+      min-height: 600px;
+    }
+
+    .section {
+      padding: 70px 5%;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      align-items: end;
+      margin-bottom: 35px;
+    }
+
+    .section-head h2 {
+      font-family: "Bodoni Moda", serif;
+      font-size: 54px;
+      letter-spacing: -2px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      margin-bottom: 35px;
+    }
+
+    .search {
+      border: 1px solid var(--line);
+      padding: 15px 16px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      border: 1px solid var(--black);
+      padding: 14px 18px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 11px;
+      color: var(--black);
+      background: var(--white);
+    }
+
+    .filter-btn.active {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 34px;
+    }
+
+    .product {
+      background: white;
+      border: 1px solid var(--line);
+      position: relative;
+      transition: .25s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 40px rgba(0,0,0,.08);
+    }
+
+    .product-img {
+      height: 390px;
+      overflow: hidden;
+      background: var(--gray);
+      position: relative;
+    }
+
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: .45s ease;
+    }
+
+    .product:hover img {
+      transform: scale(1.06);
+    }
+
+    .tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(255,255,255,.9);
+      padding: 7px 10px;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .fav {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      font-size: 25px;
+      color: #111;
+    }
+
+    .product-body {
+      padding: 18px;
+    }
+
+    .product-body h3 {
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      margin-bottom: 8px;
+    }
+
+    .product-body p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .size-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .sizes {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 7px;
+      margin-bottom: 16px;
+    }
+
+    .size-option {
+      border: 1px solid var(--line);
+      padding: 11px 0;
+      font-size: 12px;
+      background: white;
+    }
+
+    .size-option.active {
+      background: var(--black);
+      color: white;
+      border-color: var(--black);
+    }
+
+    .buy-row {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 8px;
+    }
+
+    .price {
+      background: var(--gray);
+      padding: 13px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .add-btn {
+      background: var(--black);
+      color: white;
+      padding: 13px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .view-btn {
+      width: 100%;
+      margin-top: 8px;
+      border: 1px solid var(--black);
+      padding: 13px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .cart-panel {
+      position: fixed;
+      right: -460px;
+      top: 0;
+      width: 440px;
+      max-width: 94%;
+      height: 100vh;
+      background: white;
+      z-index: 200;
+      border-left: 1px solid var(--line);
+      transition: .3s;
+      padding: 24px;
+      overflow-y: auto;
+    }
+
+    .cart-panel.active {
+      right: 0;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+
+    .cart-header h2 {
+      font-family: "Bodoni Moda", serif;
+      font-size: 38px;
+    }
+
+    .close-btn {
+      font-size: 30px;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 74px 1fr auto;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: center;
+    }
+
+    .cart-item img {
+      width: 74px;
+      height: 92px;
+      object-fit: cover;
+    }
+
+    .cart-item strong {
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .cart-size {
+      display: block;
+      margin: 6px 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .qty button {
+      border: 1px solid var(--line);
+      width: 26px;
+      height: 26px;
+    }
+
+    .remove-btn {
+      font-size: 22px;
+      color: #b00020;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      background: var(--gray);
+      padding: 18px;
+      margin-top: 22px;
+      font-weight: 700;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      background: var(--black);
+      color: white;
+      padding: 16px;
+      margin-top: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .checkout {
+      display: none;
+      padding: 70px 5%;
+    }
+
+    .checkout.active {
+      display: block;
+    }
+
+    .checkout-box {
+      border: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: white;
+    }
+
+    .checkout-info,
+    .qr-box {
+      padding: 36px;
+    }
+
+    .checkout-info h2,
+    .qr-box h3 {
+      font-family: "Bodoni Moda", serif;
+      font-size: 46px;
+      margin-bottom: 14px;
+    }
+
+    .summary {
+      margin-top: 20px;
+      background: var(--gray);
+      padding: 18px;
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .qr-box {
+      border-left: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .qr-box img {
+      width: 270px;
+      max-width: 100%;
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      padding: 10px;
+    }
+
+    .whatsapp-btn,
+    .floating-whatsapp {
+      background: var(--green);
+      color: white;
+      text-decoration: none;
+    }
+
+    .whatsapp-btn {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 15px 24px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 12px;
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+      z-index: 90;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.72);
+      display: none;
+      place-items: center;
+      z-index: 300;
+      padding: 20px;
+    }
+
+    .modal.active {
+      display: grid;
+    }
+
+    .modal-card {
+      background: white;
+      max-width: 1050px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      animation: pop .2s ease;
+    }
+
+    .zoom-container {
+      height: 680px;
+      overflow: hidden;
+      background: var(--gray);
+      cursor: zoom-in;
+    }
+
+    .zoom-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .12s ease;
+      transform-origin: center;
+    }
+
+    .modal-info {
+      padding: 36px;
+    }
+
+    .modal-info h2 {
+      font-family: "Bodoni Moda", serif;
+      font-size: 50px;
+      line-height: .95;
+      margin-bottom: 18px;
+    }
+
+    .modal-info p {
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .zoom-note {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 12px;
+      color: var(--muted);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      transform: translateX(-50%) translateY(90px);
+      background: var(--black);
+      color: white;
+      padding: 14px 24px;
+      z-index: 500;
+      opacity: 0;
+      transition: .25s;
+      font-size: 13px;
+    }
+
+    .toast.active {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    footer {
+      padding: 28px 5%;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    @keyframes pop {
+      from { opacity: 0; transform: scale(.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @media (max-width: 850px) {
+      .hero,
+      .checkout-box,
+      .modal-card {
+        grid-template-columns: 1fr;
+      }
+
+      nav a {
+        display: none;
+      }
+
+      .hero-img {
+        min-height: 420px;
+      }
+
+      .controls {
+        grid-template-columns: 1fr;
+      }
+
+      .zoom-container {
+        height: 430px;
+      }
+
+      .section-head {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Jud<span>ith</span></div>
+
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#catalogo">Catálogo</a>
+    <a href="#comprar">Comprar</a>
+    <button class="cart-top" onclick="toggleCart()">Carrito <span id="cartCount">0</span></button>
+  </nav>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="hero-text">
+    <h1>Elegancia para vestir con propósito</h1>
+    <p>
+      Prendas femeninas para iglesia: vestidos, blusas, faldas y conjuntos con una estética moderna,
+      sobria y delicada.
+    </p>
+    <button onclick="scrollToCatalog()">Ver catálogo</button>
+  </div>
+
+  <div class="hero-img"></div>
+</section>
+
+<section class="section" id="catalogo">
+  <div class="section-head">
+    <div>
+      <h2>Nueva colección</h2>
+      <p>Selecciona una talla antes de agregar al carrito.</p>
+    </div>
+  </div>
+
+  <div class="controls">
+    <input class="search" id="searchInput" type="text" placeholder="Buscar prendas..." oninput="filterProducts()">
+
+    <div class="filters">
+      <button class="filter-btn active" onclick="setCategory('Todos', this)">Todos</button>
+      <button class="filter-btn" onclick="setCategory('Vestidos', this)">Vestidos</button>
+      <button class="filter-btn" onclick="setCategory('Blusas', this)">Blusas</button>
+      <button class="filter-btn" onclick="setCategory('Faldas', this)">Faldas</button>
+      <button class="filter-btn" onclick="setCategory('Conjuntos', this)">Conjuntos</button>
+    </div>
+  </div>
+
+  <div class="products" id="products"></div>
+</section>
+
+<section class="checkout" id="comprar">
+  <div class="checkout-box">
+    <div class="checkout-info">
+      <h2>Finalizar compra</h2>
+      <p>Realiza el pago por QR y envía el comprobante por WhatsApp.</p>
+
+      <div class="summary" id="orderSummary"></div>
+
+      <a class="whatsapp-btn" id="whatsappLink" target="_blank">Enviar pedido por WhatsApp</a>
+    </div>
+
+    <div class="qr-box">
+      <h3>Pago QR</h3>
+      <p>Escanea este código para realizar el pago.</p>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=Pago%20Judith" alt="QR de pago Judith">
+      <p class="zoom-note">Reemplaza esta imagen por tu QR real.</p>
+    </div>
+  </div>
+</section>
+
+<aside class="cart-panel" id="cartPanel">
+  <div class="cart-header">
+    <h2>Carrito</h2>
+    <button class="close-btn" onclick="toggleCart()">×</button>
+  </div>
+
+  <div id="cartItems"></div>
+
+  <div class="cart-total">
+    <span>Total</span>
+    <span id="cartTotal">S/ 0.00</span>
+  </div>
+
+  <button class="checkout-btn" onclick="goCheckout()">Ir a comprar</button>
+</aside>
+
+<div class="modal" id="productModal" onclick="closeModal(event)">
+  <div class="modal-card" id="modalContent"></div>
+</div>
+
+<a class="floating-whatsapp" id="floatingWhatsApp" target="_blank">💬</a>
+
+<div class="toast" id="toast"></div>
+
+<footer>
+  © 2026 Judith | Vestimenta para iglesia
+</footer>
+
+<script>
+  const WHATSAPP_NUMBER = "51999999999";
+  const ALL_SIZES = ["S", "M", "L", "XL"];
+
+  const products = [
+    {
+      id: 1,
+      name: "Vestido rosa elegante",
+      category: "Vestidos",
+      description: "Vestido delicado para reuniones, cultos especiales y eventos de iglesia.",
+      price: 125,
+      image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=1000&q=85"
+    },
+    {
+      id: 2,
+      name: "Blusa blanca formal",
+      category: "Blusas",
+      description: "Blusa sobria y elegante, ideal para combinar con faldas largas.",
+      price: 75,
+      image: "https://images.unsplash.com/photo-1551803091-e20673f15770?auto=format&fit=crop&w=1000&q=85"
+    },
+    {
+      id: 3,
+      name: "Falda larga beige",
+      category: "Faldas",
+      description: "Falda larga con caída elegante, cómoda y apropiada para iglesia.",
+      price: 92,
+      image: "https://images.unsplash.com/photo-1583496661160-fb5886a13d27?auto=format&fit=crop&w=1000&q=85"
+    },
+    {
+      id: 4,
+      name: "Vestido azul pastel",
+      category: "Vestidos",
+      description: "Vestido femenino de tono suave para ocasiones especiales.",
+      price: 139,
+      image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1000&q=85"
+    },
+    {
+      id: 5,
+      name: "Blusa manga larga",
+      category: "Blusas",
+      description: "Blusa moderna, elegante y recatada para uso diario o reuniones.",
+      price: 85,
+      image: "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=1000&q=85"
+    },
+    {
+      id: 6,
+      name: "Conjunto dama iglesia",
+      category: "Conjuntos",
+      description: "Conjunto completo para vestir elegante, cómoda y sofisticada.",
+      price: 165,
+      image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1000&q=85"
+    },
+    {
+      id: 7,
+      name: "Vestido crema premium",
+      category: "Vestidos",
+      description: "Vestido premium con estilo clásico, limpio y refinado.",
+      price: 149,
+      image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=85"
+    },
+    {
+      id: 8,
+      name: "Falda negra formal",
+      category: "Faldas",
+      description: "Falda negra elegante, fácil de combinar con blusas claras.",
+      price: 98,
+      image: "https://images.unsplash.com/photo-1560243563-062bfc001d68?auto=format&fit=crop&w=1000&q=85"
+    }
+  ];
+
+  let cart = [];
+  let favorites = [];
+  let selectedSizes = {};
+  let currentCategory = "Todos";
+  let modalSelectedSize = null;
+
+  const productsContainer = document.getElementById("products");
+  const cartPanel = document.getElementById("cartPanel");
+  const cartItems = document.getElementById("cartItems");
+  const cartCount = document.getElementById("cartCount");
+  const cartTotal = document.getElementById("cartTotal");
+  const orderSummary = document.getElementById("orderSummary");
+  const whatsappLink = document.getElementById("whatsappLink");
+  const floatingWhatsApp = document.getElementById("floatingWhatsApp");
+  const toast = document.getElementById("toast");
+
+  function renderProducts(list = products) {
+    productsContainer.innerHTML = list.map(product => {
+      const selectedSize = selectedSizes[product.id];
+      const isFavorite = favorites.includes(product.id);
+
+      return `
+        <article class="product">
+          <div class="product-img">
+            <img src="${product.image}" alt="${product.name}">
+            <span class="tag">${product.category}</span>
+            <button class="fav" onclick="toggleFavorite(${product.id})">${isFavorite ? "♥" : "♡"}</button>
+          </div>
+
+          <div class="product-body">
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+
+            <div class="size-title">Talla</div>
+            <div class="sizes">
+              ${ALL_SIZES.map(size => `
+                <button class="size-option ${selectedSize === size ? "active" : ""}" onclick="selectSize(${product.id}, '${size}')">
+                  ${size}
+                </button>
+              `).join("")}
+            </div>
+
+            <div class="buy-row">
+              <div class="price">S/ ${product.price.toFixed(2)}</div>
+              <button class="add-btn" onclick="addToCart(${product.id})">Agregar</button>
+            </div>
+
+            <button class="view-btn" onclick="openProduct(${product.id})">Ver detalle</button>
+          </div>
+        </article>
+      `;
+    }).join("");
+  }
+
+  function selectSize(productId, size) {
+    selectedSizes[productId] = size;
+    filterProducts();
+  }
+
+  function setCategory(category, button) {
+    currentCategory = category;
+    document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
+    filterProducts();
+  }
+
+  function filterProducts() {
+    const search = document.getElementById("searchInput").value.toLowerCase();
+
+    const filtered = products.filter(product => {
+      const categoryMatch = currentCategory === "Todos" || product.category === currentCategory;
+      const searchMatch =
+        product.name.toLowerCase().includes(search) ||
+        product.category.toLowerCase().includes(search) ||
+        product.description.toLowerCase().includes(search);
+
+      return categoryMatch && searchMatch;
+    });
+
+    renderProducts(filtered);
+  }
+
+  function addToCart(productId, customSize = null) {
+    const product = products.find(item => item.id === productId);
+    const size = customSize || selectedSizes[productId];
+
+    if (!size) {
+      showToast("Selecciona una talla antes de agregar al carrito.");
+      return;
+    }
+
+    const existing = cart.find(item => item.id === productId && item.size === size);
+
+    if (existing) {
+      existing.quantity++;
+    } else {
+      cart.push({ ...product, size, quantity: 1 });
+    }
+
+    updateCart();
+    showToast(`${product.name} talla ${size} agregado al carrito.`);
+  }
+
+  function updateCart() {
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+    cartCount.textContent = totalItems;
+    cartTotal.textContent = `S/ ${totalPrice.toFixed(2)}`;
+
+    if (!cart.length) {
+      cartItems.innerHTML = "<p>Tu carrito está vacío.</p>";
+    } else {
+      cartItems.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <img src="${item.image}" alt="${item.name}">
+
+          <div>
+            <strong>${item.name}</strong>
+            <span class="cart-size">Talla ${item.size}</span>
+            <p>S/ ${item.price.toFixed(2)}</p>
+
+            <div class="qty">
+              <button onclick="decreaseQuantity(${item.id}, '${item.size}')">−</button>
+              <strong>${item.quantity}</strong>
+              <button onclick="increaseQuantity(${item.id}, '${item.size}')">+</button>
+            </div>
+          </div>
+
+          <button class="remove-btn" onclick="removeFromCart(${item.id}, '${item.size}')">×</button>
+        </div>
+      `).join("");
+    }
+
+    updateOrderSummary();
+  }
+
+  function increaseQuantity(productId, size) {
+    const item = cart.find(product => product.id === productId && product.size === size);
+    if (item) item.quantity++;
+    updateCart();
+  }
+
+  function decreaseQuantity(productId, size) {
+    const item = cart.find(product => product.id === productId && product.size === size);
+    if (!item) return;
+
+    if (item.quantity > 1) {
+      item.quantity--;
+    } else {
+      removeFromCart(productId, size);
+    }
+
+    updateCart();
+  }
+
+  function removeFromCart(productId, size) {
+    cart = cart.filter(item => !(item.id === productId && item.size === size));
+    updateCart();
+  }
+
+  function updateOrderSummary() {
+    if (!cart.length) {
+      orderSummary.innerHTML = "<p>No hay productos seleccionados.</p>";
+      whatsappLink.href = `https://wa.me/${WHATSAPP_NUMBER}?text=Hola%20Judith,%20quiero%20hacer%20una%20consulta.`;
+      floatingWhatsApp.href = whatsappLink.href;
+      return;
+    }
+
+    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+    orderSummary.innerHTML = `
+      ${cart.map(item => `
+        <p>${item.quantity} x ${item.name} | Talla ${item.size} - S/ ${(item.price * item.quantity).toFixed(2)}</p>
+      `).join("")}
+      <hr style="margin:14px 0;">
+      <strong>Total: S/ ${total.toFixed(2)}</strong>
+    `;
+
+    const message = encodeURIComponent(
+      `Hola Judith, quiero comprar estas prendas:\n\n` +
+      cart.map(item => `- ${item.quantity} x ${item.name} | Talla ${item.size} - S/ ${(item.price * item.quantity).toFixed(2)}`).join("\n") +
+      `\n\nTotal: S/ ${total.toFixed(2)}\n\nDeseo pagar por QR.`
+    );
+
+    whatsappLink.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+    floatingWhatsApp.href = whatsappLink.href;
+  }
+
+  function toggleCart() {
+    cartPanel.classList.toggle("active");
+  }
+
+  function goCheckout() {
+    if (!cart.length) {
+      showToast("Primero agrega una prenda al carrito.");
+      return;
+    }
+
+    cartPanel.classList.remove("active");
+    document.getElementById("comprar").classList.add("active");
+    document.getElementById("comprar").scrollIntoView({ behavior: "smooth" });
+  }
+
+  function openProduct(productId) {
+    const product = products.find(item => item.id === productId);
+    modalSelectedSize = selectedSizes[productId] || null;
+
+    document.getElementById("modalContent").innerHTML = `
+      <div>
+        <div class="zoom-container" onmousemove="zoomImage(event)" onmouseleave="resetZoom()" ontouchmove="zoomTouch(event)" ontouchend="resetZoom()">
+          <img id="zoomImage" src="${product.image}" alt="${product.name}">
+        </div>
+      </div>
+
+      <div class="modal-info">
+        <h2>${product.name}</h2>
+        <p>${product.description}</p>
+        <p class="zoom-note">Mueve el cursor sobre la imagen para hacer zoom.</p>
+
+        <div class="size-title">Talla</div>
+        <div class="sizes" id="modalSizes">
+          ${ALL_SIZES.map(size => `
+            <button class="size-option ${modalSelectedSize === size ? "active" : ""}" onclick="selectModalSize('${size}', ${product.id}, event)">
+              ${size}
+            </button>
+          `).join("")}
+        </div>
+
+        <h3>S/ ${product.price.toFixed(2)}</h3>
+
+        <br>
+
+        <button class="add-btn" onclick="addFromModal(${product.id})">Agregar al carrito</button>
+        <button class="view-btn" onclick="closeModalDirect()">Cerrar</button>
+      </div>
+    `;
+
+    document.getElementById("productModal").classList.add("active");
+  }
+
+  function selectModalSize(size, productId, event) {
+    modalSelectedSize = size;
+    selectedSizes[productId] = size;
+
+    document.querySelectorAll("#modalSizes .size-option").forEach(btn => btn.classList.remove("active"));
+    event.target.classList.add("active");
+
+    filterProducts();
+  }
+
+  function addFromModal(productId) {
+    if (!modalSelectedSize) {
+      showToast("Selecciona una talla antes de agregar al carrito.");
+      return;
+    }
+
+    addToCart(productId, modalSelectedSize);
+    closeModalDirect();
+  }
+
+  function zoomImage(event) {
+    const container = event.currentTarget;
+    const image = document.getElementById("zoomImage");
+    const rect = container.getBoundingClientRect();
+
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+    image.style.transformOrigin = `${x}% ${y}%`;
+    image.style.transform = "scale(2.35)";
+  }
+
+  function zoomTouch(event) {
+    event.preventDefault();
+
+    const touch = event.touches[0];
+    const container = event.currentTarget;
+    const image = document.getElementById("zoomImage");
+    const rect = container.getBoundingClientRect();
+
+    const x = ((touch.clientX - rect.left) / rect.width) * 100;
+    const y = ((touch.clientY - rect.top) / rect.height) * 100;
+
+    image.style.transformOrigin = `${x}% ${y}%`;
+    image.style.transform = "scale(2.35)";
+  }
+
+  function resetZoom() {
+    const image = document.getElementById("zoomImage");
+    if (!image) return;
+
+    image.style.transform = "scale(1)";
+    image.style.transformOrigin = "center";
+  }
+
+  function closeModal(event) {
+    if (event.target.id === "productModal") {
+      closeModalDirect();
+    }
+  }
+
+  function closeModalDirect() {
+    document.getElementById("productModal").classList.remove("active");
+    resetZoom();
+  }
+
+  function toggleFavorite(productId) {
+    if (favorites.includes(productId)) {
+      favorites = favorites.filter(id => id !== productId);
+    } else {
+      favorites.push(productId);
+    }
+
+    filterProducts();
+  }
+
+  function scrollToCatalog() {
+    document.getElementById("catalogo").scrollIntoView({ behavior: "smooth" });
+  }
+
+  function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add("active");
+
+    setTimeout(() => {
+      toast.classList.remove("active");
+    }, 2300);
+  }
+
+  renderProducts();
+  updateCart();
+</script>
+
+</body>
+</html>
