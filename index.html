@@ -16,10 +16,13 @@
       --muted:#777;
       --accent:#7a4b34;
       --green:#25d366;
-      --danger:#b00020;
     }
 
-    * { margin:0; padding:0; box-sizing:border-box; }
+    * {
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
     body {
       font-family: Helvetica, Arial, sans-serif;
@@ -38,7 +41,6 @@
       display:flex;
       justify-content:space-between;
       align-items:center;
-      gap:20px;
     }
 
     .logo {
@@ -47,23 +49,26 @@
       font-weight:900;
       letter-spacing:-3px;
       cursor:pointer;
-      white-space:nowrap;
     }
 
-    .logo span { font-style:italic; color:var(--accent); }
+    .logo span {
+      font-style:italic;
+      color:var(--accent);
+    }
 
     nav {
       display:flex;
       align-items:center;
-      gap:20px;
+      gap:26px;
       font-size:13px;
       letter-spacing:1px;
       text-transform:uppercase;
-      flex-wrap:nowrap;
-      justify-content:flex-end;
     }
 
-    nav a { text-decoration:none; color:var(--black); }
+    nav a {
+      text-decoration:none;
+      color:var(--black);
+    }
 
     button {
       border:0;
@@ -72,18 +77,14 @@
       font-family:Helvetica, Arial, sans-serif;
     }
 
-    .cart-top, .admin-top {
+    .cart-top {
+      background:var(--black);
       color:white;
       padding:12px 18px;
       font-size:12px;
       letter-spacing:1px;
       text-transform:uppercase;
-      min-width:90px;
-      text-align:center;
     }
-
-    .cart-top { background:var(--black); }
-    .admin-top { background:var(--accent); }
 
     .hero {
       min-height:86vh;
@@ -131,8 +132,13 @@
       min-height:600px;
     }
 
-    .section { padding:70px 5%; }
-    .section-head { margin-bottom:35px; }
+    .section {
+      padding:70px 5%;
+    }
+
+    .section-head {
+      margin-bottom:35px;
+    }
 
     .section-head h2 {
       font-family:"Bodoni Moda", serif;
@@ -140,7 +146,10 @@
       letter-spacing:-2px;
     }
 
-    .section-head p { color:var(--muted); font-size:14px; }
+    .section-head p {
+      color:var(--muted);
+      font-size:14px;
+    }
 
     .controls {
       display:grid;
@@ -156,7 +165,11 @@
       font-size:14px;
     }
 
-    .filters { display:flex; gap:8px; flex-wrap:wrap; }
+    .filters {
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
 
     .filter-btn {
       border:1px solid var(--black);
@@ -168,7 +181,10 @@
       background:white;
     }
 
-    .filter-btn.active { background:var(--black); color:white; }
+    .filter-btn.active {
+      background:var(--black);
+      color:white;
+    }
 
     .products {
       display:grid;
@@ -203,11 +219,15 @@
       display:block;
     }
 
-    .product:hover img { transform:scale(1.04); }
+    .product:hover img {
+      transform:scale(1.04);
+    }
 
-    .tag, .item-number, .color-tag {
+    .tag {
       position:absolute;
-      background:rgba(255,255,255,.92);
+      top:14px;
+      left:14px;
+      background:rgba(255,255,255,.9);
       padding:7px 10px;
       font-size:10px;
       letter-spacing:1px;
@@ -215,9 +235,26 @@
       z-index:4;
     }
 
-    .tag { top:14px; left:14px; }
-    .item-number { bottom:14px; left:14px; font-size:12px; font-weight:700; }
-    .color-tag { bottom:14px; right:14px; font-weight:700; }
+    .item-number {
+      position:absolute;
+      bottom:14px;
+      left:14px;
+      background:rgba(255,255,255,.94);
+      padding:8px 12px;
+      font-size:12px;
+      font-weight:700;
+      z-index:4;
+      letter-spacing:.7px;
+    }
+
+    .fav {
+      position:absolute;
+      top:10px;
+      right:12px;
+      font-size:25px;
+      color:#111;
+      z-index:4;
+    }
 
     .slide-arrow {
       position:absolute;
@@ -233,10 +270,18 @@
       place-items:center;
     }
 
-    .slide-arrow.left { left:10px; }
-    .slide-arrow.right { right:10px; animation:hintMove 1.2s infinite; }
+    .slide-arrow.left {
+      left:10px;
+    }
 
-    .product-body { padding:18px; }
+    .slide-arrow.right {
+      right:10px;
+      animation:hintMove 1.2s infinite;
+    }
+
+    .product-body {
+      padding:18px;
+    }
 
     .size-title {
       font-size:11px;
@@ -258,20 +303,12 @@
       padding:11px 0;
       font-size:12px;
       background:white;
-      position:relative;
     }
 
-    .size-option.active { background:var(--black); color:white; border-color:var(--black); }
-    .size-option.disabled { opacity:.35; cursor:not-allowed; text-decoration:line-through; }
-
-    .stock-text {
-      display:block;
-      margin-top:4px;
-      font-size:10px;
-      color:var(--muted);
-      text-transform:none;
-      letter-spacing:0;
-      font-weight:400;
+    .size-option.active {
+      background:var(--black);
+      color:white;
+      border-color:var(--black);
     }
 
     .buy-row {
@@ -322,7 +359,9 @@
       overflow-y:auto;
     }
 
-    .cart-panel.active { right:0; }
+    .cart-panel.active {
+      right:0;
+    }
 
     .cart-header {
       display:flex;
@@ -331,8 +370,14 @@
       margin-bottom:28px;
     }
 
-    .cart-header h2 { font-family:"Bodoni Moda", serif; font-size:38px; }
-    .close-btn { font-size:30px; }
+    .cart-header h2 {
+      font-family:"Bodoni Moda", serif;
+      font-size:38px;
+    }
+
+    .close-btn {
+      font-size:30px;
+    }
 
     .cart-item {
       display:grid;
@@ -343,11 +388,34 @@
       align-items:center;
     }
 
-    .cart-item img { width:74px; height:92px; object-fit:cover; }
-    .cart-item strong { font-size:13px; text-transform:uppercase; }
-    .cart-size { display:block; margin:6px 0; font-size:12px; color:var(--muted); }
-    .qty button { border:1px solid var(--line); width:26px; height:26px; }
-    .remove-btn { font-size:22px; color:var(--danger); }
+    .cart-item img {
+      width:74px;
+      height:92px;
+      object-fit:cover;
+    }
+
+    .cart-item strong {
+      font-size:13px;
+      text-transform:uppercase;
+    }
+
+    .cart-size {
+      display:block;
+      margin:6px 0;
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .qty button {
+      border:1px solid var(--line);
+      width:26px;
+      height:26px;
+    }
+
+    .remove-btn {
+      font-size:22px;
+      color:#b00020;
+    }
 
     .cart-total {
       display:flex;
@@ -368,8 +436,14 @@
       letter-spacing:1px;
     }
 
-    .checkout { display:none; padding:70px 5%; }
-    .checkout.active { display:block; }
+    .checkout {
+      display:none;
+      padding:70px 5%;
+    }
+
+    .checkout.active {
+      display:block;
+    }
 
     .checkout-box {
       border:1px solid var(--line);
@@ -378,9 +452,13 @@
       background:white;
     }
 
-    .checkout-info, .qr-box { padding:36px; }
+    .checkout-info,
+    .qr-box {
+      padding:36px;
+    }
 
-    .checkout-info h2, .qr-box h3 {
+    .checkout-info h2,
+    .qr-box h3 {
       font-family:"Bodoni Moda", serif;
       font-size:46px;
       margin-bottom:14px;
@@ -394,7 +472,10 @@
       font-size:14px;
     }
 
-    .qr-box { border-left:1px solid var(--line); text-align:center; }
+    .qr-box {
+      border-left:1px solid var(--line);
+      text-align:center;
+    }
 
     .qr-box img {
       width:270px;
@@ -404,7 +485,12 @@
       padding:10px;
     }
 
-    .whatsapp-btn, .floating-whatsapp { background:var(--green); color:white; text-decoration:none; }
+    .whatsapp-btn,
+    .floating-whatsapp {
+      background:var(--green);
+      color:white;
+      text-decoration:none;
+    }
 
     .whatsapp-btn {
       display:inline-block;
@@ -427,7 +513,7 @@
       z-index:90;
     }
 
-    .modal, .admin-modal {
+    .modal {
       position:fixed;
       inset:0;
       background:rgba(0,0,0,.72);
@@ -438,7 +524,9 @@
       overflow-y:auto;
     }
 
-    .modal.active, .admin-modal.active { display:grid; }
+    .modal.active {
+      display:grid;
+    }
 
     .modal-card {
       background:white;
@@ -475,9 +563,16 @@
       justify-content:center;
     }
 
-    .modal-info h3 { font-size:22px; margin:8px 0 20px; }
+    .modal-info h3 {
+      font-size:22px;
+      margin:8px 0 20px;
+    }
 
-    .modal-actions { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .modal-actions {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
 
     .exit-btn {
       border:1px solid var(--black);
@@ -488,101 +583,6 @@
       background:white;
       color:var(--black);
     }
-
-    .admin-card {
-      background:white;
-      width:min(980px, 96vw);
-      max-height:92vh;
-      overflow-y:auto;
-      padding:28px;
-      animation:pop .2s ease;
-    }
-
-    .admin-head {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:15px;
-      margin-bottom:20px;
-    }
-
-    .admin-head h2 {
-      font-family:"Bodoni Moda", serif;
-      font-size:42px;
-      letter-spacing:-2px;
-    }
-
-    .admin-grid {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:18px;
-    }
-
-    .admin-field { display:flex; flex-direction:column; gap:7px; margin-bottom:12px; }
-    .admin-field label { font-size:12px; text-transform:uppercase; letter-spacing:1px; font-weight:700; }
-
-    .admin-field input, .admin-field select {
-      border:1px solid var(--line);
-      padding:13px;
-      outline:none;
-      font-size:14px;
-      width:100%;
-    }
-
-    .admin-box {
-      border:1px solid var(--line);
-      padding:18px;
-      background:#fff;
-    }
-
-    .admin-box h3 {
-      font-family:"Bodoni Moda", serif;
-      font-size:30px;
-      margin-bottom:12px;
-    }
-
-    .stock-grid {
-      display:grid;
-      grid-template-columns:repeat(4, 1fr);
-      gap:8px;
-    }
-
-    .admin-actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
-
-    .admin-save, .admin-small, .admin-danger {
-      padding:12px 15px;
-      text-transform:uppercase;
-      letter-spacing:1px;
-      font-size:11px;
-    }
-
-    .admin-save { background:var(--black); color:white; }
-    .admin-small { border:1px solid var(--black); color:var(--black); }
-    .admin-danger { background:var(--danger); color:white; }
-
-    .variant-preview {
-      display:grid;
-      grid-template-columns:70px 1fr auto;
-      gap:10px;
-      align-items:center;
-      border-bottom:1px solid var(--line);
-      padding:10px 0;
-      font-size:13px;
-    }
-
-    .variant-preview img { width:70px; height:82px; object-fit:cover; background:var(--gray); }
-
-    .admin-product {
-      display:grid;
-      grid-template-columns:72px 1fr auto;
-      gap:12px;
-      align-items:center;
-      border-bottom:1px solid var(--line);
-      padding:12px 0;
-      font-size:13px;
-    }
-
-    .admin-product img { width:72px; height:86px; object-fit:cover; background:var(--gray); }
 
     .toast {
       position:fixed;
@@ -599,7 +599,10 @@
       text-align:center;
     }
 
-    .toast.active { opacity:1; transform:translateX(-50%) translateY(0); }
+    .toast.active {
+      opacity:1;
+      transform:translateX(-50%) translateY(0);
+    }
 
     footer {
       padding:28px 5%;
@@ -621,20 +624,30 @@
     }
 
     @media (max-width:850px) {
-      .hero, .checkout-box, .modal-card, .admin-grid { grid-template-columns:1fr; }
-      nav a { display:none; }
-      header { align-items:center; }
-      .hero-img { min-height:420px; }
-      .controls { grid-template-columns:1fr; }
-      .zoom-container { height:430px; }
-      .modal-info { padding:28px 22px 34px; }
-      .admin-head { align-items:flex-start; }
+      .hero,
+      .checkout-box,
+      .modal-card {
+        grid-template-columns:1fr;
+      }
 
-      .cart-top, .admin-top {
-        height:56px;
-        display:flex;
-        align-items:center;
-        justify-content:center;
+      nav a {
+        display:none;
+      }
+
+      .hero-img {
+        min-height:420px;
+      }
+
+      .controls {
+        grid-template-columns:1fr;
+      }
+
+      .zoom-container {
+        height:430px;
+      }
+
+      .modal-info {
+        padding:28px 22px 34px;
       }
     }
   </style>
@@ -643,16 +656,13 @@
 <body>
 
 <header>
-  <div style="display:flex;align-items:center;gap:12px;">
-    <div class="logo" onclick="goHome()">Jud<span>ith</span></div>
-    <button class="admin-top" onclick="openAdminLogin()">ADM</button>
-  </div>
+  <div class="logo" onclick="goHome()">Jud<span>ith</span></div>
 
   <nav>
     <a href="#inicio">Inicio</a>
     <a href="#catalogo">Catálogo</a>
     <a href="#comprar">Comprar</a>
-    <button class="cart-top" onclick="toggleCart()">🛒 <span id="cartCount">0</span></button>
+    <button class="cart-top" onclick="toggleCart()">Carrito <span id="cartCount">0</span></button>
   </nav>
 </header>
 
@@ -662,17 +672,18 @@
     <p>Prendas femeninas para iglesia con una estética moderna, sobria y delicada.</p>
     <button onclick="scrollToCatalog()">Ver catálogo</button>
   </div>
+
   <div class="hero-img"></div>
 </section>
 
 <section class="section" id="catalogo">
   <div class="section-head">
     <h2>Nueva colección</h2>
-    <p>Busca por categoría, código, nombre o color.</p>
+    <p>Busca por categoría o código. Ejemplo: 04, 04-02, Vestidos 04-02.</p>
   </div>
 
   <div class="controls">
-    <input class="search" id="searchInput" type="text" placeholder="Buscar prenda, color, categoría o código..." oninput="filterProducts()">
+    <input class="search" id="searchInput" type="text" placeholder="Buscar por categoría o código de item..." oninput="filterProducts()">
 
     <div class="filters">
       <button class="filter-btn active" onclick="setCategory('Todos', this)">Todos</button>
@@ -691,7 +702,9 @@
     <div class="checkout-info">
       <h2>Finalizar compra</h2>
       <p>Realiza el pago por QR y envía el comprobante por WhatsApp.</p>
+
       <div class="summary" id="orderSummary"></div>
+
       <a class="whatsapp-btn" id="whatsappLink" target="_blank">Enviar pedido por WhatsApp</a>
     </div>
 
@@ -709,11 +722,14 @@
     <h2>Carrito</h2>
     <button class="close-btn" onclick="toggleCart()">×</button>
   </div>
+
   <div id="cartItems"></div>
+
   <div class="cart-total">
     <span>Total</span>
     <span id="cartTotal">S/ 0.00</span>
   </div>
+
   <button class="checkout-btn" onclick="goCheckout()">Ir a comprar</button>
 </aside>
 
@@ -721,147 +737,88 @@
   <div class="modal-card" id="modalContent"></div>
 </div>
 
-<div class="admin-modal" id="adminLoginModal">
-  <div class="admin-card" style="max-width:430px;">
-    <div class="admin-head">
-      <h2>Editar</h2>
-      <button class="close-btn" onclick="closeAdminLogin()">×</button>
-    </div>
-
-    <div class="admin-field">
-      <label>Usuario</label>
-      <input id="adminUser" type="text" placeholder="Usuario">
-    </div>
-
-    <div class="admin-field">
-      <label>Clave</label>
-      <input id="adminPass" type="password" placeholder="Clave">
-    </div>
-
-    <button class="admin-save" style="width:100%;" onclick="loginAdmin()">Ingresar</button>
-    <p style="margin-top:14px;color:#777;font-size:12px;line-height:1.6;">Temporal: usuario <b>judith</b> y clave <b>1234</b>. Luego esto debe pasar a Firebase para seguridad real.</p>
-  </div>
-</div>
-
-<div class="admin-modal" id="adminPanelModal">
-  <div class="admin-card">
-    <div class="admin-head">
-      <h2>Panel de prendas</h2>
-      <button class="close-btn" onclick="closeAdminPanel()">×</button>
-    </div>
-
-    <div class="admin-grid">
-      <div class="admin-box">
-        <h3 id="adminFormTitle">Agregar prenda</h3>
-
-        <input type="hidden" id="editProductId">
-
-        <div class="admin-field">
-          <label>Nombre de la prenda</label>
-          <input id="adminName" type="text" placeholder="Ejemplo: Vestido elegante 01">
-        </div>
-
-        <div class="admin-field">
-          <label>Categoría</label>
-          <select id="adminCategory">
-            <option value="Vestidos">Vestidos</option>
-            <option value="Blusas">Blusas</option>
-            <option value="Faldas">Faldas</option>
-            <option value="Conjuntos">Conjuntos</option>
-          </select>
-        </div>
-
-        <div class="admin-field">
-          <label>Precio</label>
-          <input id="adminPrice" type="number" min="0" step="0.01" placeholder="120">
-        </div>
-
-        <hr style="border:0;border-top:1px solid var(--line);margin:18px 0;">
-
-        <h3>Color / foto / stock</h3>
-
-        <div class="admin-field">
-          <label>Color</label>
-          <input id="variantColor" type="text" placeholder="Ejemplo: Azul, Negro, Crema">
-        </div>
-
-        <div class="admin-field">
-          <label>Foto de la prenda</label>
-          <input id="variantImage" type="file" accept="image/*">
-        </div>
-
-        <div class="stock-grid">
-          <div class="admin-field"><label>Stock S</label><input id="stockS" type="number" min="0" value="0"></div>
-          <div class="admin-field"><label>Stock M</label><input id="stockM" type="number" min="0" value="0"></div>
-          <div class="admin-field"><label>Stock L</label><input id="stockL" type="number" min="0" value="0"></div>
-          <div class="admin-field"><label>Stock XL</label><input id="stockXL" type="number" min="0" value="0"></div>
-        </div>
-
-        <div class="admin-actions">
-          <button class="admin-small" onclick="addVariantToForm()">Agregar color</button>
-          <button class="admin-danger" onclick="clearVariants()">Limpiar colores</button>
-        </div>
-
-        <div id="variantList" style="margin-top:14px;"></div>
-
-        <div class="admin-actions">
-          <button class="admin-save" onclick="saveProduct()">Guardar prenda</button>
-          <button class="admin-small" onclick="resetAdminForm()">Nuevo</button>
-        </div>
-      </div>
-
-      <div class="admin-box">
-        <h3>Mis prendas</h3>
-        <p style="color:#777;font-size:13px;margin-bottom:12px;line-height:1.6;">Aquí puedes editar o eliminar las prendas que agregaste.</p>
-        <div id="adminProductList"></div>
-      </div>
-    </div>
-  </div>
-</div>
+<a class="floating-whatsapp" id="floatingWhatsApp" target="_blank">💬</a>
 
 <div class="toast" id="toast"></div>
 
-<footer>© 2026 Judith | Vestimenta para iglesia</footer>
+<footer>
+  © 2026 Judith | Vestimenta para iglesia
+</footer>
 
 <script>
   const WHATSAPP_NUMBER = "51999999999";
   const ALL_SIZES = ["S", "M", "L", "XL"];
-  const ADMIN_USER = "judith";
-  const ADMIN_PASS = "1234";
-  const STORAGE_KEY = "judith_products_local";
 
-  const sampleProducts = [
-    {
-      id: Date.now() + 1,
-      name:"Vestido elegante 01",
-      category:"Vestidos",
-      price:120,
-      variants:[
-        { color:"Crema", image:"https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=1000&q=85", stock:{S:3,M:5,L:2,XL:1} },
-        { color:"Rosa", image:"https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1000&q=85", stock:{S:2,M:4,L:1,XL:0} }
-      ]
-    },
-    {
-      id: Date.now() + 2,
-      name:"Blusa delicada 01",
-      category:"Blusas",
-      price:70,
-      variants:[
-        { color:"Blanco", image:"https://images.unsplash.com/photo-1551803091-e20673f15770?auto=format&fit=crop&w=1000&q=85", stock:{S:4,M:4,L:3,XL:2} },
-        { color:"Negro", image:"https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=1000&q=85", stock:{S:1,M:3,L:2,XL:1} }
-      ]
+  const palettes = {
+    Vestidos: [
+      { image:"https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=1000&q=85" },
+      { image:"https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1000&q=85" },
+      { image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=85" },
+      { image:"https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1000&q=85" }
+    ],
+    Blusas: [
+      { image:"https://images.unsplash.com/photo-1551803091-e20673f15770?auto=format&fit=crop&w=1000&q=85" },
+      { image:"https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=1000&q=85" },
+      { image:"https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=1000&q=85" },
+      { image:"https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=1000&q=85" }
+    ],
+    Faldas: [
+      { image:"https://images.unsplash.com/photo-1583496661160-fb5886a13d27?auto=format&fit=crop&w=1000&q=85" },
+      { image:"https://images.unsplash.com/photo-1560243563-062bfc001d68?auto=format&fit=crop&w=1000&q=85" },
+      { image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=85" },
+      { image:"https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1000&q=85" }
+    ],
+    Conjuntos: [
+      { image:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=85" },
+      { image:"https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1000&q=85" },
+      { image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=85" },
+      { image:"https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=1000&q=85" }
+    ]
+  };
+
+  const basePrices = {
+    Vestidos: 120,
+    Blusas: 70,
+    Faldas: 85,
+    Conjuntos: 150
+  };
+
+  const products = [];
+
+  Object.keys(palettes).forEach(category => {
+    for (let i = 1; i <= 30; i++) {
+      const itemNumber = String(i).padStart(2, "0");
+
+      const variants = palettes[category].map((variant, index) => {
+        const variantNumber = String(index + 1).padStart(2, "0");
+
+        return {
+          ...variant,
+          variantNumber,
+          fullCode: `${category} ${itemNumber}-${variantNumber}`,
+          shortCode: `${itemNumber}-${variantNumber}`
+        };
+      });
+
+      products.push({
+        id: products.length + 1,
+        itemNumber,
+        code: `${category} ${itemNumber}`,
+        category,
+        price: basePrices[category] + (i % 6) * 5,
+        variants
+      });
     }
-  ];
+  });
 
-  let products = loadProducts();
   let cart = [];
+  let favorites = [];
   let selectedSizes = {};
   let selectedVariants = {};
   let currentCategory = "Todos";
   let modalSelectedSize = null;
   let modalVariantIndex = 0;
   let touchStartX = 0;
-  let adminTempVariants = [];
 
   const productsContainer = document.getElementById("products");
   const cartPanel = document.getElementById("cartPanel");
@@ -873,74 +830,47 @@
   const floatingWhatsApp = document.getElementById("floatingWhatsApp");
   const toast = document.getElementById("toast");
 
-  function loadProducts() {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (!saved) return sampleProducts;
-
-    try {
-      const parsed = JSON.parse(saved);
-      return Array.isArray(parsed) ? parsed : sampleProducts;
-    } catch {
-      return sampleProducts;
-    }
-  }
-
-  function saveProductsToStorage() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
-  }
-
   function getVariant(product) {
     const index = selectedVariants[product.id] || 0;
-    return product.variants[index] || product.variants[0];
-  }
-
-  function getAvailableStock(product, size, variant) {
-    if (!variant || !variant.stock) return 0;
-    const totalStock = Number(variant.stock[size] || 0);
-    const inCart = cart
-      .filter(item => item.id === product.id && item.size === size && item.color === variant.color)
-      .reduce((sum, item) => sum + item.quantity, 0);
-
-    return totalStock - inCart;
+    return product.variants[index];
   }
 
   function renderProducts(list = products) {
     productsContainer.innerHTML = list.map(product => {
       const selectedSize = selectedSizes[product.id];
+      const isFavorite = favorites.includes(product.id);
       const variantIndex = selectedVariants[product.id] || 0;
-      const variant = product.variants[variantIndex] || product.variants[0];
+      const variant = product.variants[variantIndex];
 
       return `
         <article class="product">
-          <div class="product-img" ontouchstart="startSwipe(event)" ontouchend="endSwipe(event, ${product.id})">
-            <img src="${variant.image}" alt="${product.name} ${variant.color}">
+          <div class="product-img"
+            ontouchstart="startSwipe(event)"
+            ontouchend="endSwipe(event, ${product.id})">
+            <img src="${variant.image}" alt="${variant.fullCode}">
             <span class="tag">${product.category}</span>
-            <span class="item-number">${product.name}</span>
-            <span class="color-tag">${variant.color}</span>
+            <span class="item-number">N° ${variant.shortCode}</span>
+
+            <button class="fav" onclick="toggleFavorite(${product.id})">${isFavorite ? "♥" : "♡"}</button>
 
             <button class="slide-arrow left" onclick="changeVariant(${product.id}, -1)">‹</button>
             <button class="slide-arrow right" onclick="changeVariant(${product.id}, 1)">›</button>
           </div>
 
           <div class="product-body">
-            <div class="size-title">Color: ${variant.color}</div>
-            <div class="size-title">Talla disponible</div>
+            <div class="size-title">Item: ${variant.fullCode}</div>
+            <div class="size-title">Talla</div>
 
             <div class="sizes">
-              ${ALL_SIZES.map(size => {
-                const available = getAvailableStock(product, size, variant);
-                return `
-                  <button class="size-option ${selectedSize === size ? "active" : ""} ${available <= 0 ? "disabled" : ""}"
-                    onclick="selectSize(${product.id}, '${size}')" ${available <= 0 ? "disabled" : ""}>
-                    ${size}
-                    <span class="stock-text">${available > 0 ? available + " disp." : "Agotado"}</span>
-                  </button>
-                `;
-              }).join("")}
+              ${ALL_SIZES.map(size => `
+                <button class="size-option ${selectedSize === size ? "active" : ""}" onclick="selectSize(${product.id}, '${size}')">
+                  ${size}
+                </button>
+              `).join("")}
             </div>
 
             <div class="buy-row">
-              <div class="price">S/ ${Number(product.price).toFixed(2)}</div>
+              <div class="price">S/ ${product.price.toFixed(2)}</div>
               <button class="add-btn" onclick="addToCart(${product.id})">Agregar</button>
             </div>
 
@@ -951,7 +881,7 @@
     }).join("");
 
     if (!list.length) {
-      productsContainer.innerHTML = "<p>No se encontró ninguna prenda con ese código, color o categoría.</p>";
+      productsContainer.innerHTML = "<p>No se encontró ninguna prenda con ese código o categoría.</p>";
     }
   }
 
@@ -960,27 +890,27 @@
     const current = selectedVariants[productId] || 0;
     const next = (current + direction + product.variants.length) % product.variants.length;
     selectedVariants[productId] = next;
-    selectedSizes[productId] = null;
     filterProducts();
   }
 
-  function startSwipe(event) { touchStartX = event.changedTouches[0].clientX; }
+  function startSwipe(event) {
+    touchStartX = event.changedTouches[0].clientX;
+  }
 
   function endSwipe(event, productId) {
     const touchEndX = event.changedTouches[0].clientX;
     const difference = touchStartX - touchEndX;
+
     if (Math.abs(difference) < 45) return;
-    changeVariant(productId, difference > 0 ? 1 : -1);
+
+    if (difference > 0) {
+      changeVariant(productId, 1);
+    } else {
+      changeVariant(productId, -1);
+    }
   }
 
   function selectSize(productId, size) {
-    const product = products.find(item => item.id === productId);
-    const variant = getVariant(product);
-    if (getAvailableStock(product, size, variant) <= 0) {
-      showToast("Esta talla está agotada para este color.");
-      return;
-    }
-
     selectedSizes[productId] = size;
     filterProducts();
   }
@@ -997,10 +927,16 @@
 
     const filtered = products.filter(product => {
       const categoryMatch = currentCategory === "Todos" || product.category === currentCategory;
-      const variantMatch = product.variants.some(variant => variant.color.toLowerCase().includes(search));
+
+      const variantMatch = product.variants.some(variant =>
+        variant.fullCode.toLowerCase().includes(search) ||
+        variant.shortCode.includes(search)
+      );
+
       const searchMatch =
-        product.name.toLowerCase().includes(search) ||
         product.category.toLowerCase().includes(search) ||
+        product.code.toLowerCase().includes(search) ||
+        product.itemNumber.includes(search) ||
         variantMatch;
 
       return categoryMatch && searchMatch;
@@ -1019,33 +955,27 @@
       return;
     }
 
-    if (getAvailableStock(product, size, variant) <= 0) {
-      showToast("No hay stock disponible para esa talla y color.");
-      return;
-    }
-
     const existing = cart.find(item =>
-      item.id === productId && item.size === size && item.color === variant.color
+      item.id === productId &&
+      item.size === size &&
+      item.variantCode === variant.fullCode
     );
 
     if (existing) {
       existing.quantity++;
     } else {
       cart.push({
-        id: product.id,
-        name: product.name,
-        category: product.category,
-        price: Number(product.price),
+        ...product,
         size,
-        color: variant.color,
+        variantCode: variant.fullCode,
+        shortCode: variant.shortCode,
         image: variant.image,
         quantity: 1
       });
     }
 
     updateCart();
-    filterProducts();
-    showToast(`Agregado: ${product.name}, color ${variant.color}, talla ${size}.`);
+    showToast(`Agregado: ${variant.fullCode}, talla ${size}.`);
   }
 
   function updateCart() {
@@ -1060,18 +990,21 @@
     } else {
       cartItems.innerHTML = cart.map(item => `
         <div class="cart-item">
-          <img src="${item.image}" alt="${item.name}">
+          <img src="${item.image}" alt="${item.variantCode}">
+
           <div>
-            <strong>${item.name}</strong>
-            <span class="cart-size">Color ${item.color} | Talla ${item.size}</span>
+            <strong>${item.variantCode}</strong>
+            <span class="cart-size">Talla ${item.size}</span>
             <p>S/ ${item.price.toFixed(2)}</p>
+
             <div class="qty">
-              <button onclick="decreaseQuantity(${item.id}, '${item.size}', '${item.color}')">−</button>
+              <button onclick="decreaseQuantity(${item.id}, '${item.size}', '${item.variantCode}')">−</button>
               <strong>${item.quantity}</strong>
-              <button onclick="increaseQuantity(${item.id}, '${item.size}', '${item.color}')">+</button>
+              <button onclick="increaseQuantity(${item.id}, '${item.size}', '${item.variantCode}')">+</button>
             </div>
           </div>
-          <button class="remove-btn" onclick="removeFromCart(${item.id}, '${item.size}', '${item.color}')">×</button>
+
+          <button class="remove-btn" onclick="removeFromCart(${item.id}, '${item.size}', '${item.variantCode}')">×</button>
         </div>
       `).join("");
     }
@@ -1079,38 +1012,41 @@
     updateOrderSummary();
   }
 
-  function increaseQuantity(productId, size, color) {
-    const product = products.find(item => item.id === productId);
-    const variant = product.variants.find(item => item.color === color);
-    const item = cart.find(product => product.id === productId && product.size === size && product.color === color);
+  function increaseQuantity(productId, size, variantCode) {
+    const item = cart.find(product =>
+      product.id === productId &&
+      product.size === size &&
+      product.variantCode === variantCode
+    );
+
+    if (item) item.quantity++;
+    updateCart();
+  }
+
+  function decreaseQuantity(productId, size, variantCode) {
+    const item = cart.find(product =>
+      product.id === productId &&
+      product.size === size &&
+      product.variantCode === variantCode
+    );
 
     if (!item) return;
 
-    if (getAvailableStock(product, size, variant) <= 0) {
-      showToast("Ya no hay más stock disponible.");
-      return;
+    if (item.quantity > 1) {
+      item.quantity--;
+    } else {
+      removeFromCart(productId, size, variantCode);
     }
 
-    item.quantity++;
     updateCart();
-    filterProducts();
   }
 
-  function decreaseQuantity(productId, size, color) {
-    const item = cart.find(product => product.id === productId && product.size === size && product.color === color);
-    if (!item) return;
-
-    if (item.quantity > 1) item.quantity--;
-    else removeFromCart(productId, size, color);
+  function removeFromCart(productId, size, variantCode) {
+    cart = cart.filter(item =>
+      !(item.id === productId && item.size === size && item.variantCode === variantCode)
+    );
 
     updateCart();
-    filterProducts();
-  }
-
-  function removeFromCart(productId, size, color) {
-    cart = cart.filter(item => !(item.id === productId && item.size === size && item.color === color));
-    updateCart();
-    filterProducts();
   }
 
   function updateOrderSummary() {
@@ -1125,7 +1061,7 @@
 
     orderSummary.innerHTML = `
       ${cart.map(item => `
-        <p>${item.quantity} x ${item.name} | Color ${item.color} | Talla ${item.size} - S/ ${(item.price * item.quantity).toFixed(2)}</p>
+        <p>${item.quantity} x ${item.variantCode} | Talla ${item.size} - S/ ${(item.price * item.quantity).toFixed(2)}</p>
       `).join("")}
       <hr style="margin:14px 0;">
       <strong>Total: S/ ${total.toFixed(2)}</strong>
@@ -1134,7 +1070,7 @@
     const message = encodeURIComponent(
       `Hola Judith, quiero comprar estas prendas:\n\n` +
       cart.map(item =>
-        `- ${item.quantity} x ${item.name} | Color ${item.color} | Talla ${item.size} - S/ ${(item.price * item.quantity).toFixed(2)}`
+        `- ${item.quantity} x ${item.variantCode} | Talla ${item.size} - S/ ${(item.price * item.quantity).toFixed(2)}`
       ).join("\n") +
       `\n\nTotal: S/ ${total.toFixed(2)}\n\nDeseo pagar por QR.`
     );
@@ -1143,7 +1079,9 @@
     floatingWhatsApp.href = whatsappLink.href;
   }
 
-  function toggleCart() { cartPanel.classList.toggle("active"); }
+  function toggleCart() {
+    cartPanel.classList.toggle("active");
+  }
 
   function goCheckout() {
     if (!cart.length) {
@@ -1160,36 +1098,35 @@
     const product = products.find(item => item.id === productId);
     modalSelectedSize = selectedSizes[productId] || null;
     modalVariantIndex = selectedVariants[productId] || 0;
-    const variant = product.variants[modalVariantIndex] || product.variants[0];
+    const variant = product.variants[modalVariantIndex];
 
     document.getElementById("modalContent").innerHTML = `
       <div>
-        <div class="zoom-container" onmousemove="zoomImage(event)" onmouseleave="resetZoom()" ontouchmove="zoomTouch(event)" ontouchend="resetZoom()">
-          <img id="zoomImage" src="${variant.image}" alt="${product.name} ${variant.color}">
+        <div class="zoom-container"
+          onmousemove="zoomImage(event)"
+          onmouseleave="resetZoom()"
+          ontouchmove="zoomTouch(event)"
+          ontouchend="resetZoom()">
+          <img id="zoomImage" src="${variant.image}" alt="${variant.fullCode}">
+
           <button class="slide-arrow left" onclick="changeModalVariant(${product.id}, -1)">‹</button>
           <button class="slide-arrow right" onclick="changeModalVariant(${product.id}, 1)">›</button>
         </div>
       </div>
 
       <div class="modal-info">
-        <div class="size-title">${product.name}</div>
-        <div class="size-title">Color: ${variant.color}</div>
+        <div class="size-title">Item: ${variant.fullCode}</div>
         <div class="size-title">Talla</div>
 
         <div class="sizes" id="modalSizes">
-          ${ALL_SIZES.map(size => {
-            const available = getAvailableStock(product, size, variant);
-            return `
-              <button class="size-option ${modalSelectedSize === size ? "active" : ""} ${available <= 0 ? "disabled" : ""}"
-                onclick="selectModalSize('${size}', ${product.id}, event)" ${available <= 0 ? "disabled" : ""}>
-                ${size}
-                <span class="stock-text">${available > 0 ? available + " disp." : "Agotado"}</span>
-              </button>
-            `;
-          }).join("")}
+          ${ALL_SIZES.map(size => `
+            <button class="size-option ${modalSelectedSize === size ? "active" : ""}" onclick="selectModalSize('${size}', ${product.id}, event)">
+              ${size}
+            </button>
+          `).join("")}
         </div>
 
-        <h3>S/ ${Number(product.price).toFixed(2)}</h3>
+        <h3>S/ ${product.price.toFixed(2)}</h3>
 
         <div class="modal-actions">
           <button class="add-btn" onclick="addFromModal(${product.id})">Agregar</button>
@@ -1205,25 +1142,17 @@
     const product = products.find(item => item.id === productId);
     modalVariantIndex = (modalVariantIndex + direction + product.variants.length) % product.variants.length;
     selectedVariants[productId] = modalVariantIndex;
-    modalSelectedSize = null;
-    selectedSizes[productId] = null;
     openProduct(productId);
     filterProducts();
   }
 
   function selectModalSize(size, productId, event) {
-    const product = products.find(item => item.id === productId);
-    const variant = product.variants[modalVariantIndex] || product.variants[0];
-
-    if (getAvailableStock(product, size, variant) <= 0) {
-      showToast("Esta talla está agotada.");
-      return;
-    }
-
     modalSelectedSize = size;
     selectedSizes[productId] = size;
+
     document.querySelectorAll("#modalSizes .size-option").forEach(btn => btn.classList.remove("active"));
-    event.currentTarget.classList.add("active");
+    event.target.classList.add("active");
+
     filterProducts();
   }
 
@@ -1241,8 +1170,10 @@
     const container = event.currentTarget;
     const image = document.getElementById("zoomImage");
     const rect = container.getBoundingClientRect();
+
     const x = ((event.clientX - rect.left) / rect.width) * 100;
     const y = ((event.clientY - rect.top) / rect.height) * 100;
+
     image.style.transformOrigin = `${x}% ${y}%`;
     image.style.transform = "scale(2.35)";
   }
@@ -1251,23 +1182,31 @@
     const touch = event.touches[0];
     const container = event.currentTarget;
     const image = document.getElementById("zoomImage");
+
     if (!image) return;
+
     const rect = container.getBoundingClientRect();
+
     const x = ((touch.clientX - rect.left) / rect.width) * 100;
     const y = ((touch.clientY - rect.top) / rect.height) * 100;
+
     image.style.transformOrigin = `${x}% ${y}%`;
     image.style.transform = "scale(2.35)";
   }
 
   function resetZoom() {
     const image = document.getElementById("zoomImage");
+
     if (!image) return;
+
     image.style.transform = "scale(1)";
     image.style.transformOrigin = "center";
   }
 
   function closeModal(event) {
-    if (event.target.id === "productModal") closeModalDirect();
+    if (event.target.id === "productModal") {
+      closeModalDirect();
+    }
   }
 
   function closeModalDirect() {
@@ -1275,245 +1214,41 @@
     resetZoom();
   }
 
+  function toggleFavorite(productId) {
+    if (favorites.includes(productId)) {
+      favorites = favorites.filter(id => id !== productId);
+    } else {
+      favorites.push(productId);
+    }
+
+    filterProducts();
+  }
+
   function scrollToCatalog() {
     document.getElementById("catalogo").scrollIntoView({ behavior:"smooth" });
+  }
+
+  function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add("active");
+
+    setTimeout(() => {
+      toast.classList.remove("active");
+    }, 2300);
   }
 
   function goHome() {
     document.getElementById("comprar").classList.remove("active");
     cartPanel.classList.remove("active");
     closeModalDirect();
-    document.getElementById("inicio").scrollIntoView({ behavior:"smooth" });
-  }
 
-  function openAdminLogin() {
-    document.getElementById("adminLoginModal").classList.add("active");
-  }
-
-  function closeAdminLogin() {
-    document.getElementById("adminLoginModal").classList.remove("active");
-  }
-
-  function loginAdmin() {
-    const user = document.getElementById("adminUser").value.trim();
-    const pass = document.getElementById("adminPass").value.trim();
-
-    if (user !== ADMIN_USER || pass !== ADMIN_PASS) {
-      showToast("Usuario o clave incorrecta.");
-      return;
-    }
-
-    closeAdminLogin();
-    document.getElementById("adminPanelModal").classList.add("active");
-    renderAdminProductList();
-  }
-
-  function closeAdminPanel() {
-    document.getElementById("adminPanelModal").classList.remove("active");
-  }
-
-  function fileToBase64(file) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = reject;
-      reader.readAsDataURL(file);
+    document.getElementById("inicio").scrollIntoView({
+      behavior:"smooth"
     });
-  }
-
-  async function addVariantToForm() {
-    const color = document.getElementById("variantColor").value.trim();
-    const file = document.getElementById("variantImage").files[0];
-    const editId = document.getElementById("editProductId").value;
-
-    if (!color) {
-      showToast("Escribe el color de la prenda.");
-      return;
-    }
-
-    let image = "";
-    if (file) {
-      image = await fileToBase64(file);
-    } else if (!editId) {
-      showToast("Sube una foto para este color.");
-      return;
-    } else {
-      showToast("Para agregar un nuevo color, sube una foto.");
-      return;
-    }
-
-    adminTempVariants.push({
-      color,
-      image,
-      stock:{
-        S:Number(document.getElementById("stockS").value || 0),
-        M:Number(document.getElementById("stockM").value || 0),
-        L:Number(document.getElementById("stockL").value || 0),
-        XL:Number(document.getElementById("stockXL").value || 0)
-      }
-    });
-
-    document.getElementById("variantColor").value = "";
-    document.getElementById("variantImage").value = "";
-    document.getElementById("stockS").value = 0;
-    document.getElementById("stockM").value = 0;
-    document.getElementById("stockL").value = 0;
-    document.getElementById("stockXL").value = 0;
-
-    renderVariantList();
-  }
-
-  function renderVariantList() {
-    const container = document.getElementById("variantList");
-
-    if (!adminTempVariants.length) {
-      container.innerHTML = "<p style='color:#777;font-size:13px;'>Aún no agregaste colores.</p>";
-      return;
-    }
-
-    container.innerHTML = adminTempVariants.map((variant, index) => `
-      <div class="variant-preview">
-        <img src="${variant.image}" alt="${variant.color}">
-        <div>
-          <strong>${variant.color}</strong><br>
-          <span>S:${variant.stock.S} | M:${variant.stock.M} | L:${variant.stock.L} | XL:${variant.stock.XL}</span>
-        </div>
-        <button class="admin-danger" onclick="removeTempVariant(${index})">Eliminar</button>
-      </div>
-    `).join("");
-  }
-
-  function removeTempVariant(index) {
-    adminTempVariants.splice(index, 1);
-    renderVariantList();
-  }
-
-  function clearVariants() {
-    adminTempVariants = [];
-    renderVariantList();
-  }
-
-  function saveProduct() {
-    const id = document.getElementById("editProductId").value;
-    const name = document.getElementById("adminName").value.trim();
-    const category = document.getElementById("adminCategory").value;
-    const price = Number(document.getElementById("adminPrice").value || 0);
-
-    if (!name || !category || price <= 0) {
-      showToast("Completa nombre, categoría y precio.");
-      return;
-    }
-
-    if (!adminTempVariants.length) {
-      showToast("Agrega al menos un color con foto y stock.");
-      return;
-    }
-
-    if (id) {
-      const product = products.find(item => String(item.id) === String(id));
-      product.name = name;
-      product.category = category;
-      product.price = price;
-      product.variants = adminTempVariants;
-      showToast("Prenda actualizada correctamente.");
-    } else {
-      products.push({
-        id: Date.now(),
-        name,
-        category,
-        price,
-        variants:adminTempVariants
-      });
-      showToast("Prenda agregada correctamente.");
-    }
-
-    saveProductsToStorage();
-    resetAdminForm();
-    renderAdminProductList();
-    filterProducts();
-  }
-
-  function editProduct(id) {
-    const product = products.find(item => item.id === id);
-    if (!product) return;
-
-    document.getElementById("adminFormTitle").textContent = "Editar prenda";
-    document.getElementById("editProductId").value = product.id;
-    document.getElementById("adminName").value = product.name;
-    document.getElementById("adminCategory").value = product.category;
-    document.getElementById("adminPrice").value = product.price;
-    adminTempVariants = JSON.parse(JSON.stringify(product.variants));
-    renderVariantList();
-  }
-
-  function deleteProduct(id) {
-    const ok = confirm("¿Seguro que deseas eliminar esta prenda?");
-    if (!ok) return;
-
-    products = products.filter(item => item.id !== id);
-    cart = cart.filter(item => item.id !== id);
-    saveProductsToStorage();
-    renderAdminProductList();
-    filterProducts();
-    updateCart();
-    showToast("Prenda eliminada.");
-  }
-
-  function resetAdminForm() {
-    document.getElementById("adminFormTitle").textContent = "Agregar prenda";
-    document.getElementById("editProductId").value = "";
-    document.getElementById("adminName").value = "";
-    document.getElementById("adminCategory").value = "Vestidos";
-    document.getElementById("adminPrice").value = "";
-    document.getElementById("variantColor").value = "";
-    document.getElementById("variantImage").value = "";
-    document.getElementById("stockS").value = 0;
-    document.getElementById("stockM").value = 0;
-    document.getElementById("stockL").value = 0;
-    document.getElementById("stockXL").value = 0;
-    adminTempVariants = [];
-    renderVariantList();
-  }
-
-  function renderAdminProductList() {
-    const container = document.getElementById("adminProductList");
-
-    if (!products.length) {
-      container.innerHTML = "<p>No tienes prendas registradas.</p>";
-      return;
-    }
-
-    container.innerHTML = products.map(product => {
-      const first = product.variants[0];
-      const totalStock = product.variants.reduce((sum, variant) =>
-        sum + ALL_SIZES.reduce((s, size) => s + Number(variant.stock[size] || 0), 0), 0
-      );
-
-      return `
-        <div class="admin-product">
-          <img src="${first.image}" alt="${product.name}">
-          <div>
-            <strong>${product.name}</strong><br>
-            <span>${product.category} | S/ ${Number(product.price).toFixed(2)} | ${product.variants.length} color(es) | Stock total: ${totalStock}</span>
-          </div>
-          <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;">
-            <button class="admin-small" onclick="editProduct(${product.id})">ADM</button>
-            <button class="admin-danger" onclick="deleteProduct(${product.id})">Eliminar</button>
-          </div>
-        </div>
-      `;
-    }).join("");
-  }
-
-  function showToast(message) {
-    toast.textContent = message;
-    toast.classList.add("active");
-    setTimeout(() => toast.classList.remove("active"), 2300);
   }
 
   renderProducts();
   updateCart();
-  renderVariantList();
 </script>
 
 </body>
