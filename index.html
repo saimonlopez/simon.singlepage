@@ -634,13 +634,15 @@
 <body>
 
 <header>
-  <div class="logo" onclick="goHome()">Jud<span>ith</span></div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div class="logo" onclick="goHome()">Jud<span>ith</span></div>
+    <button class="admin-top" onclick="openAdminLogin()">Editar</button>
+  </div>
 
   <nav>
     <a href="#inicio">Inicio</a>
     <a href="#catalogo">Catálogo</a>
     <a href="#comprar">Comprar</a>
-    <button class="admin-top" onclick="openAdminLogin()">Editar</button>
     <button class="cart-top" onclick="toggleCart()">Carrito <span id="cartCount">0</span></button>
   </nav>
 </header>
@@ -808,7 +810,6 @@
   </div>
 </div>
 
-<a class="floating-whatsapp" id="floatingWhatsApp" target="_blank">💬</a>
 <div class="toast" id="toast"></div>
 
 <footer>© 2026 Judith | Vestimenta para iglesia</footer>
@@ -1508,3 +1509,4 @@
 
 </body>
 </html>
+
