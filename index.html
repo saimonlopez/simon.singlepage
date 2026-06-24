@@ -234,6 +234,18 @@
       z-index:4;
     }
 
+    .item-number {
+      position:absolute;
+      bottom:14px;
+      left:14px;
+      background:rgba(255,255,255,.94);
+      padding:8px 12px;
+      font-size:12px;
+      font-weight:700;
+      z-index:4;
+      letter-spacing:.7px;
+    }
+
     .fav {
       position:absolute;
       top:10px;
@@ -666,11 +678,11 @@
 <section class="section" id="catalogo">
   <div class="section-head">
     <h2>Nueva colección</h2>
-    <p>Cada prenda tiene variantes de color. Usa las flechas para ver más opciones.</p>
+    <p>Busca por categoría o código. Ejemplo: 04, 04-02, Vestidos 04-02.</p>
   </div>
 
   <div class="controls">
-    <input class="search" id="searchInput" type="text" placeholder="Buscar categoría..." oninput="filterProducts()">
+    <input class="search" id="searchInput" type="text" placeholder="Buscar por categoría o código de item..." oninput="filterProducts()">
 
     <div class="filters">
       <button class="filter-btn active" onclick="setCategory('Todos', this)">Todos</button>
@@ -738,28 +750,28 @@
 
   const palettes = {
     Vestidos: [
-      { color:"Negro", image:"https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=1000&q=85" },
-      { color:"Azul", image:"https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1000&q=85" },
-      { color:"Crema", image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=85" },
-      { color:"Rosa", image:"https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1000&q=85" }
+      { image:"https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=1000&q=85" },
+      { image:"https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1000&q=85" },
+      { image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=85" },
+      { image:"https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1000&q=85" }
     ],
     Blusas: [
-      { color:"Blanco", image:"https://images.unsplash.com/photo-1551803091-e20673f15770?auto=format&fit=crop&w=1000&q=85" },
-      { color:"Beige", image:"https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=1000&q=85" },
-      { color:"Celeste", image:"https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=1000&q=85" },
-      { color:"Marrón", image:"https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=1000&q=85" }
+      { image:"https://images.unsplash.com/photo-1551803091-e20673f15770?auto=format&fit=crop&w=1000&q=85" },
+      { image:"https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=1000&q=85" },
+      { image:"https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=1000&q=85" },
+      { image:"https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=1000&q=85" }
     ],
     Faldas: [
-      { color:"Beige", image:"https://images.unsplash.com/photo-1583496661160-fb5886a13d27?auto=format&fit=crop&w=1000&q=85" },
-      { color:"Negro", image:"https://images.unsplash.com/photo-1560243563-062bfc001d68?auto=format&fit=crop&w=1000&q=85" },
-      { color:"Crema", image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=85" },
-      { color:"Marrón", image:"https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1000&q=85" }
+      { image:"https://images.unsplash.com/photo-1583496661160-fb5886a13d27?auto=format&fit=crop&w=1000&q=85" },
+      { image:"https://images.unsplash.com/photo-1560243563-062bfc001d68?auto=format&fit=crop&w=1000&q=85" },
+      { image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=85" },
+      { image:"https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1000&q=85" }
     ],
     Conjuntos: [
-      { color:"Negro", image:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=85" },
-      { color:"Beige", image:"https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1000&q=85" },
-      { color:"Crema", image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=85" },
-      { color:"Gris", image:"https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=1000&q=85" }
+      { image:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=85" },
+      { image:"https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1000&q=85" },
+      { image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=85" },
+      { image:"https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=1000&q=85" }
     ]
   };
 
@@ -774,12 +786,26 @@
 
   Object.keys(palettes).forEach(category => {
     for (let i = 1; i <= 30; i++) {
+      const itemNumber = String(i).padStart(2, "0");
+
+      const variants = palettes[category].map((variant, index) => {
+        const variantNumber = String(index + 1).padStart(2, "0");
+
+        return {
+          ...variant,
+          variantNumber,
+          fullCode: `${category} ${itemNumber}-${variantNumber}`,
+          shortCode: `${itemNumber}-${variantNumber}`
+        };
+      });
+
       products.push({
         id: products.length + 1,
-        code: `${category.slice(0, 3).toUpperCase()}-${String(i).padStart(2, "0")}`,
+        itemNumber,
+        code: `${category} ${itemNumber}`,
         category,
         price: basePrices[category] + (i % 6) * 5,
-        variants: palettes[category]
+        variants
       });
     }
   });
@@ -820,8 +846,9 @@
           <div class="product-img"
             ontouchstart="startSwipe(event)"
             ontouchend="endSwipe(event, ${product.id})">
-            <img src="${variant.image}" alt="${product.category} ${variant.color}">
+            <img src="${variant.image}" alt="${variant.fullCode}">
             <span class="tag">${product.category}</span>
+            <span class="item-number">N° ${variant.shortCode}</span>
 
             <button class="fav" onclick="toggleFavorite(${product.id})">${isFavorite ? "♥" : "♡"}</button>
 
@@ -830,8 +857,7 @@
           </div>
 
           <div class="product-body">
-            <div class="size-title">Color: ${variant.color}</div>
-
+            <div class="size-title">Item: ${variant.fullCode}</div>
             <div class="size-title">Talla</div>
 
             <div class="sizes">
@@ -852,6 +878,10 @@
         </article>
       `;
     }).join("");
+
+    if (!list.length) {
+      productsContainer.innerHTML = "<p>No se encontró ninguna prenda con ese código o categoría.</p>";
+    }
   }
 
   function changeVariant(productId, direction) {
@@ -892,13 +922,21 @@
   }
 
   function filterProducts() {
-    const search = document.getElementById("searchInput").value.toLowerCase();
+    const search = document.getElementById("searchInput").value.trim().toLowerCase();
 
     const filtered = products.filter(product => {
       const categoryMatch = currentCategory === "Todos" || product.category === currentCategory;
+
+      const variantMatch = product.variants.some(variant =>
+        variant.fullCode.toLowerCase().includes(search) ||
+        variant.shortCode.includes(search)
+      );
+
       const searchMatch =
         product.category.toLowerCase().includes(search) ||
-        product.code.toLowerCase().includes(search);
+        product.code.toLowerCase().includes(search) ||
+        product.itemNumber.includes(search) ||
+        variantMatch;
 
       return categoryMatch && searchMatch;
     });
@@ -919,7 +957,7 @@
     const existing = cart.find(item =>
       item.id === productId &&
       item.size === size &&
-      item.color === variant.color
+      item.variantCode === variant.fullCode
     );
 
     if (existing) {
@@ -928,14 +966,15 @@
       cart.push({
         ...product,
         size,
-        color: variant.color,
+        variantCode: variant.fullCode,
+        shortCode: variant.shortCode,
         image: variant.image,
         quantity: 1
       });
     }
 
     updateCart();
-    showToast(`Prenda agregada: ${variant.color}, talla ${size}.`);
+    showToast(`Agregado: ${variant.fullCode}, talla ${size}.`);
   }
 
   function updateCart() {
@@ -950,21 +989,21 @@
     } else {
       cartItems.innerHTML = cart.map(item => `
         <div class="cart-item">
-          <img src="${item.image}" alt="${item.category}">
+          <img src="${item.image}" alt="${item.variantCode}">
 
           <div>
-            <strong>${item.category} ${item.code}</strong>
-            <span class="cart-size">Color ${item.color} | Talla ${item.size}</span>
+            <strong>${item.variantCode}</strong>
+            <span class="cart-size">Talla ${item.size}</span>
             <p>S/ ${item.price.toFixed(2)}</p>
 
             <div class="qty">
-              <button onclick="decreaseQuantity(${item.id}, '${item.size}', '${item.color}')">−</button>
+              <button onclick="decreaseQuantity(${item.id}, '${item.size}', '${item.variantCode}')">−</button>
               <strong>${item.quantity}</strong>
-              <button onclick="increaseQuantity(${item.id}, '${item.size}', '${item.color}')">+</button>
+              <button onclick="increaseQuantity(${item.id}, '${item.size}', '${item.variantCode}')">+</button>
             </div>
           </div>
 
-          <button class="remove-btn" onclick="removeFromCart(${item.id}, '${item.size}', '${item.color}')">×</button>
+          <button class="remove-btn" onclick="removeFromCart(${item.id}, '${item.size}', '${item.variantCode}')">×</button>
         </div>
       `).join("");
     }
@@ -972,22 +1011,22 @@
     updateOrderSummary();
   }
 
-  function increaseQuantity(productId, size, color) {
+  function increaseQuantity(productId, size, variantCode) {
     const item = cart.find(product =>
       product.id === productId &&
       product.size === size &&
-      product.color === color
+      product.variantCode === variantCode
     );
 
     if (item) item.quantity++;
     updateCart();
   }
 
-  function decreaseQuantity(productId, size, color) {
+  function decreaseQuantity(productId, size, variantCode) {
     const item = cart.find(product =>
       product.id === productId &&
       product.size === size &&
-      product.color === color
+      product.variantCode === variantCode
     );
 
     if (!item) return;
@@ -995,15 +1034,15 @@
     if (item.quantity > 1) {
       item.quantity--;
     } else {
-      removeFromCart(productId, size, color);
+      removeFromCart(productId, size, variantCode);
     }
 
     updateCart();
   }
 
-  function removeFromCart(productId, size, color) {
+  function removeFromCart(productId, size, variantCode) {
     cart = cart.filter(item =>
-      !(item.id === productId && item.size === size && item.color === color)
+      !(item.id === productId && item.size === size && item.variantCode === variantCode)
     );
 
     updateCart();
@@ -1021,7 +1060,7 @@
 
     orderSummary.innerHTML = `
       ${cart.map(item => `
-        <p>${item.quantity} x ${item.category} ${item.code} | Color ${item.color} | Talla ${item.size} - S/ ${(item.price * item.quantity).toFixed(2)}</p>
+        <p>${item.quantity} x ${item.variantCode} | Talla ${item.size} - S/ ${(item.price * item.quantity).toFixed(2)}</p>
       `).join("")}
       <hr style="margin:14px 0;">
       <strong>Total: S/ ${total.toFixed(2)}</strong>
@@ -1030,7 +1069,7 @@
     const message = encodeURIComponent(
       `Hola Judith, quiero comprar estas prendas:\n\n` +
       cart.map(item =>
-        `- ${item.quantity} x ${item.category} ${item.code} | Color ${item.color} | Talla ${item.size} - S/ ${(item.price * item.quantity).toFixed(2)}`
+        `- ${item.quantity} x ${item.variantCode} | Talla ${item.size} - S/ ${(item.price * item.quantity).toFixed(2)}`
       ).join("\n") +
       `\n\nTotal: S/ ${total.toFixed(2)}\n\nDeseo pagar por QR.`
     );
@@ -1067,7 +1106,7 @@
           onmouseleave="resetZoom()"
           ontouchmove="zoomTouch(event)"
           ontouchend="resetZoom()">
-          <img id="zoomImage" src="${variant.image}" alt="${product.category} ${variant.color}">
+          <img id="zoomImage" src="${variant.image}" alt="${variant.fullCode}">
 
           <button class="slide-arrow left" onclick="changeModalVariant(${product.id}, -1)">‹</button>
           <button class="slide-arrow right" onclick="changeModalVariant(${product.id}, 1)">›</button>
@@ -1075,8 +1114,7 @@
       </div>
 
       <div class="modal-info">
-        <div class="size-title">Color: ${variant.color}</div>
-
+        <div class="size-title">Item: ${variant.fullCode}</div>
         <div class="size-title">Talla</div>
 
         <div class="sizes" id="modalSizes">
