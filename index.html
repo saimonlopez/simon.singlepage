@@ -584,6 +584,28 @@
 
     .admin-product img { width:72px; height:86px; object-fit:cover; background:var(--gray); }
 
+
+    .order-form {
+      margin-top:22px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+    .order-field { display:flex; flex-direction:column; gap:6px; }
+    .order-field.full { grid-column:1 / -1; }
+    .order-field label { font-size:11px; text-transform:uppercase; letter-spacing:1px; font-weight:700; }
+    .order-field input, .order-field select, .order-field textarea {
+      border:1px solid var(--line); padding:13px; font-size:14px; outline:none; width:100%; font-family:Helvetica, Arial, sans-serif;
+    }
+    .order-field textarea { min-height:78px; resize:vertical; }
+    .order-status { display:inline-block; padding:6px 9px; font-size:10px; text-transform:uppercase; letter-spacing:1px; background:var(--gray); margin-top:6px; font-weight:700; }
+    .order-status.pending { background:#fff3cd; }
+    .order-status.confirmed { background:#d1e7dd; }
+    .order-status.cancelled { background:#f8d7da; }
+    .order-status.sent { background:#dbeafe; }
+    .order-card { border:1px solid var(--line); padding:14px; margin-bottom:12px; font-size:13px; line-height:1.6; background:white; }
+    .order-card img { width:120px; max-width:100%; border:1px solid var(--line); margin-top:8px; display:block; }
+
     .toast {
       position:fixed;
       left:50%;
@@ -629,6 +651,7 @@
       .zoom-container { height:430px; }
       .modal-info { padding:28px 22px 34px; }
       .admin-head { align-items:flex-start; }
+      .order-form { grid-template-columns:1fr; }
 
       .cart-top, .admin-top {
         height:44px;
@@ -690,16 +713,27 @@
   <div class="checkout-box">
     <div class="checkout-info">
       <h2>Finalizar compra</h2>
-      <p>Realiza el pago por QR y envía el comprobante por WhatsApp.</p>
+      <p>Completa tus datos, realiza el pago por Yape y sube el comprobante.</p>
       <div class="summary" id="orderSummary"></div>
-      <a class="whatsapp-btn" id="whatsappLink" target="_blank">Enviar pedido por WhatsApp</a>
+
+      <div class="order-form">
+        <div class="order-field"><label>Nombre completo</label><input id="customerName" type="text" placeholder="Nombre del cliente"></div>
+        <div class="order-field"><label>Celular</label><input id="customerPhone" type="tel" placeholder="Ejemplo: 999999999"></div>
+        <div class="order-field"><label>Tipo de entrega</label><select id="deliveryType" onchange="updateDeliveryPlaceholder()"><option value="Recojo en tienda">Recojo en tienda</option><option value="Envío por Shalom">Envío por Shalom</option><option value="Otro transporte">Otro transporte</option></select></div>
+        <div class="order-field"><label>Distrito / Ciudad</label><input id="customerCity" type="text" placeholder="Ejemplo: Chao, Trujillo, Lima"></div>
+        <div class="order-field full"><label>Dirección / Agencia / Referencia</label><textarea id="deliveryDetail" placeholder="Ejemplo: Agencia Shalom Trujillo, DNI, dirección o referencia"></textarea></div>
+        <div class="order-field full"><label>Comprobante Yape</label><input id="paymentProof" type="file" accept="image/*"></div>
+      </div>
+
+      <button class="checkout-btn" onclick="createOrder()">Registrar pedido y enviar por WhatsApp</button>
+      <p style="margin-top:12px;color:#777;font-size:12px;line-height:1.6;">Tu pedido quedará como <b>Pago enviado</b>. La dueña revisará Yape y confirmará el pago desde ADM para descontar stock.</p>
     </div>
 
     <div class="qr-box">
-      <h3>Pago QR</h3>
+      <h3>Pago Yape QR</h3>
       <p>Escanea este código para realizar el pago.</p>
       <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=Pago%20Judith" alt="QR de pago Judith">
-      <p style="margin-top:14px;color:#777;font-size:12px;">Reemplaza esta imagen por tu QR real.</p>
+      <p style="margin-top:14px;color:#777;font-size:12px;">Reemplaza esta imagen por tu QR real de Yape.</p>
     </div>
   </div>
 </section>
@@ -816,6 +850,12 @@
         <div id="adminProductList"></div>
       </div>
     </div>
+
+    <div class="admin-box" style="margin-top:18px;">
+      <h3>Pedidos</h3>
+      <p style="color:#777;font-size:13px;margin-bottom:12px;line-height:1.6;">Revisa el comprobante, confirma el pago y recién ahí se descontará el stock.</p>
+      <div id="adminOrderList"></div>
+    </div>
   </div>
 </div>
 
@@ -829,6 +869,7 @@
   const ADMIN_USER = "judith";
   const ADMIN_PASS = "1234";
   const STORAGE_KEY = "judith_products_local";
+  const ORDERS_KEY = "judith_orders_local";
 
   const sampleProducts = [
     {
@@ -862,6 +903,7 @@
   let modalVariantIndex = 0;
   let touchStartX = 0;
   let adminTempVariants = [];
+  let orders = loadOrders();
 
   const productsContainer = document.getElementById("products");
   const cartPanel = document.getElementById("cartPanel");
@@ -870,7 +912,6 @@
   const cartTotal = document.getElementById("cartTotal");
   const orderSummary = document.getElementById("orderSummary");
   const whatsappLink = document.getElementById("whatsappLink");
-  const floatingWhatsApp = document.getElementById("floatingWhatsApp");
   const toast = document.getElementById("toast");
 
   function loadProducts() {
@@ -887,6 +928,21 @@
 
   function saveProductsToStorage() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
+  }
+
+  function loadOrders() {
+    const saved = localStorage.getItem(ORDERS_KEY);
+    if (!saved) return [];
+    try {
+      const parsed = JSON.parse(saved);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function saveOrdersToStorage() {
+    localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
   }
 
   function getVariant(product) {
@@ -1117,7 +1173,6 @@
     if (!cart.length) {
       orderSummary.innerHTML = "<p>No hay productos seleccionados.</p>";
       whatsappLink.href = `https://wa.me/${WHATSAPP_NUMBER}?text=Hola%20Judith,%20quiero%20hacer%20una%20consulta.`;
-      floatingWhatsApp.href = whatsappLink.href;
       return;
     }
 
@@ -1140,7 +1195,46 @@
     );
 
     whatsappLink.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
-    floatingWhatsApp.href = whatsappLink.href;
+  }
+
+
+  function updateDeliveryPlaceholder() {
+    const type = document.getElementById("deliveryType").value;
+    const detail = document.getElementById("deliveryDetail");
+    if (type === "Recojo en tienda") detail.placeholder = "Indica horario aproximado de recojo o alguna referencia.";
+    else if (type === "Envío por Shalom") detail.placeholder = "Escribe agencia Shalom, ciudad, nombre completo y DNI.";
+    else detail.placeholder = "Escribe transporte, agencia, dirección y datos de recepción.";
+  }
+
+  function getOrderTotal() {
+    return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  }
+
+  async function createOrder() {
+    if (!cart.length) { showToast("Primero agrega una prenda al carrito."); return; }
+    const name = document.getElementById("customerName").value.trim();
+    const phone = document.getElementById("customerPhone").value.trim();
+    const deliveryType = document.getElementById("deliveryType").value;
+    const city = document.getElementById("customerCity").value.trim();
+    const detail = document.getElementById("deliveryDetail").value.trim();
+    const proofFile = document.getElementById("paymentProof").files[0];
+    if (!name || !phone || !city || !detail) { showToast("Completa tus datos de entrega."); return; }
+    if (!proofFile) { showToast("Sube la captura del pago por Yape."); return; }
+    let proofImage = "";
+    try { proofImage = await fileToBase64(proofFile); } catch { showToast("No se pudo cargar el comprobante."); return; }
+    const total = getOrderTotal();
+    const order = { id: Date.now(), date: new Date().toLocaleString("es-PE"), status: "Pago enviado", stockDiscounted: false, customer:{ name, phone, deliveryType, city, detail }, items: cart.map(item => ({...item})), total, proofImage };
+    orders.unshift(order); saveOrdersToStorage();
+    const message = encodeURIComponent(
+      `Hola Judith, acabo de realizar un pedido y envié mi comprobante Yape.\n\n` +
+      `Pedido: #${order.id}\nCliente: ${name}\nCelular: ${phone}\nEntrega: ${deliveryType}\nCiudad: ${city}\nDetalle: ${detail}\n\nProductos:\n` +
+      order.items.map(item => `- ${item.quantity} x ${item.name} | Color ${item.color} | Talla ${item.size} - S/ ${(item.price * item.quantity).toFixed(2)}`).join("\n") +
+      `\n\nTotal pagado: S/ ${total.toFixed(2)}\n\nQuedo atento(a) a la confirmación.`
+    );
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank");
+    cart = []; updateCart(); filterProducts(); renderAdminOrderList();
+    document.getElementById("customerName").value = ""; document.getElementById("customerPhone").value = ""; document.getElementById("customerCity").value = ""; document.getElementById("deliveryDetail").value = ""; document.getElementById("paymentProof").value = "";
+    showToast("Pedido registrado como Pago enviado.");
   }
 
   function toggleCart() { cartPanel.classList.toggle("active"); }
@@ -1306,6 +1400,7 @@
     closeAdminLogin();
     document.getElementById("adminPanelModal").classList.add("active");
     renderAdminProductList();
+    renderAdminOrderList();
   }
 
   function closeAdminPanel() {
@@ -1505,6 +1600,71 @@
     }).join("");
   }
 
+
+  function renderAdminOrderList() {
+    const container = document.getElementById("adminOrderList");
+    if (!container) return;
+    if (!orders.length) { container.innerHTML = "<p>No tienes pedidos registrados.</p>"; return; }
+    container.innerHTML = orders.map(order => {
+      const statusClass = order.status === "Pago confirmado" ? "confirmed" : order.status === "Cancelado" ? "cancelled" : order.status === "Despachado" ? "sent" : "pending";
+      return `
+        <div class="order-card">
+          <strong>Pedido #${order.id}</strong><br><span>${order.date}</span><br><span class="order-status ${statusClass}">${order.status}</span>
+          <p style="margin-top:8px;"><b>Cliente:</b> ${order.customer.name}<br><b>Celular:</b> ${order.customer.phone}<br><b>Entrega:</b> ${order.customer.deliveryType}<br><b>Ciudad:</b> ${order.customer.city}<br><b>Detalle:</b> ${order.customer.detail}</p>
+          <div style="margin-top:8px;"><b>Productos:</b>${order.items.map(item => `<p>${item.quantity} x ${item.name} | Color ${item.color} | Talla ${item.size} - S/ ${(item.price * item.quantity).toFixed(2)}</p>`).join("")}<b>Total: S/ ${Number(order.total).toFixed(2)}</b></div>
+          <p style="margin-top:8px;"><b>Comprobante Yape:</b></p><img src="${order.proofImage}" alt="Comprobante Yape pedido ${order.id}">
+          <div class="admin-actions"><button class="admin-save" onclick="confirmOrderPayment(${order.id})">Confirmar pago</button><button class="admin-small" onclick="markOrderDispatched(${order.id})">Despachado</button><button class="admin-danger" onclick="cancelOrder(${order.id})">Cancelar</button><button class="admin-danger" onclick="deleteOrder(${order.id})">Eliminar</button></div>
+        </div>`;
+    }).join("");
+  }
+
+  function confirmOrderPayment(orderId) {
+    const order = orders.find(item => item.id === orderId); if (!order) return;
+    if (order.status === "Cancelado") { showToast("Este pedido está cancelado."); return; }
+    if (order.stockDiscounted) { order.status = "Pago confirmado"; saveOrdersToStorage(); renderAdminOrderList(); showToast("El pago ya estaba confirmado."); return; }
+    const unavailable = [];
+    order.items.forEach(orderItem => {
+      const product = products.find(item => item.id === orderItem.id);
+      const variant = product?.variants.find(item => item.color === orderItem.color);
+      const stock = Number(variant?.stock?.[orderItem.size] || 0);
+      if (!product || !variant || stock < orderItem.quantity) unavailable.push(`${orderItem.name} ${orderItem.color} talla ${orderItem.size}`);
+    });
+    if (unavailable.length) { showToast("Stock insuficiente para confirmar uno o más productos."); alert("Stock insuficiente:\n" + unavailable.join("\n")); return; }
+    order.items.forEach(orderItem => {
+      const product = products.find(item => item.id === orderItem.id);
+      const variant = product.variants.find(item => item.color === orderItem.color);
+      variant.stock[orderItem.size] = Number(variant.stock[orderItem.size] || 0) - orderItem.quantity;
+    });
+    order.status = "Pago confirmado"; order.stockDiscounted = true;
+    saveProductsToStorage(); saveOrdersToStorage(); renderAdminOrderList(); renderAdminProductList(); filterProducts(); updateCart();
+    showToast("Pago confirmado y stock descontado.");
+  }
+
+  function markOrderDispatched(orderId) {
+    const order = orders.find(item => item.id === orderId); if (!order) return;
+    if (!order.stockDiscounted) { showToast("Primero confirma el pago para descontar stock."); return; }
+    order.status = "Despachado"; saveOrdersToStorage(); renderAdminOrderList(); showToast("Pedido marcado como despachado.");
+  }
+
+  function cancelOrder(orderId) {
+    const order = orders.find(item => item.id === orderId); if (!order) return;
+    const ok = confirm("¿Seguro que deseas cancelar este pedido?"); if (!ok) return;
+    if (order.stockDiscounted) {
+      order.items.forEach(orderItem => {
+        const product = products.find(item => item.id === orderItem.id);
+        const variant = product?.variants.find(item => item.color === orderItem.color);
+        if (variant) variant.stock[orderItem.size] = Number(variant.stock[orderItem.size] || 0) + orderItem.quantity;
+      });
+      saveProductsToStorage();
+    }
+    order.status = "Cancelado"; order.stockDiscounted = false; saveOrdersToStorage(); renderAdminOrderList(); renderAdminProductList(); filterProducts(); showToast("Pedido cancelado.");
+  }
+
+  function deleteOrder(orderId) {
+    const ok = confirm("¿Seguro que deseas eliminar este pedido del historial?"); if (!ok) return;
+    orders = orders.filter(item => item.id !== orderId); saveOrdersToStorage(); renderAdminOrderList(); showToast("Pedido eliminado.");
+  }
+
   function showToast(message) {
     toast.textContent = message;
     toast.classList.add("active");
@@ -1514,6 +1674,7 @@
   renderProducts();
   updateCart();
   renderVariantList();
+  renderAdminOrderList();
 </script>
 
 </body>
