@@ -623,12 +623,19 @@
     @media (max-width:850px) {
       .hero, .checkout-box, .modal-card, .admin-grid { grid-template-columns:1fr; }
       nav a { display:none; }
-      header { align-items:flex-start; }
+      header { align-items:center; }
       .hero-img { min-height:420px; }
       .controls { grid-template-columns:1fr; }
       .zoom-container { height:430px; }
       .modal-info { padding:28px 22px 34px; }
       .admin-head { align-items:flex-start; }
+
+      .cart-top, .admin-top {
+        height:56px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+      }
     }
   </style>
 </head>
