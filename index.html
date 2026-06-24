@@ -78,6 +78,8 @@
       font-size:12px;
       letter-spacing:1px;
       text-transform:uppercase;
+      min-width:90px;
+      text-align:center;
     }
 
     .cart-top { background:var(--black); }
@@ -636,7 +638,7 @@
 <header>
   <div style="display:flex;align-items:center;gap:12px;">
     <div class="logo" onclick="goHome()">Jud<span>ith</span></div>
-    <button class="admin-top" onclick="openAdminLogin()">Editar</button>
+    <button class="admin-top" onclick="openAdminLogin()">ADM</button>
   </div>
 
   <nav>
@@ -1488,7 +1490,7 @@
             <span>${product.category} | S/ ${Number(product.price).toFixed(2)} | ${product.variants.length} color(es) | Stock total: ${totalStock}</span>
           </div>
           <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;">
-            <button class="admin-small" onclick="editProduct(${product.id})">Editar</button>
+            <button class="admin-small" onclick="editProduct(${product.id})">ADM</button>
             <button class="admin-danger" onclick="deleteProduct(${product.id})">Eliminar</button>
           </div>
         </div>
